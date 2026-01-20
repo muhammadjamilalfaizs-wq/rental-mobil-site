@@ -8,108 +8,142 @@
   <!-- PAKAI CDN UNTUK SEMUA -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- FONT POPPINS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
     .hero-bg {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                  url('https://images.unsplash.com/photo-1590247813693-5541d1c609fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+      background: linear-gradient(rgba(11, 18, 32, 0.85), rgba(11, 18, 32, 0.9)),
+                  url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
       background-size: cover;
       background-position: center;
     }
+    .car-card { 
+      transition: all 0.3s ease;
+    }
     .car-card:hover { 
-      transform: translateY(-5px); 
-      transition: 0.3s; 
-      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(245, 158, 11, 0.3);
+    }
+    .destination-card {
+      transition: all 0.3s ease;
     }
     .destination-card:hover {
-      transform: scale(1.03);
-      transition: 0.3s;
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     }
     .visited-card {
       transition: all 0.3s ease;
     }
     .visited-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="bg-[#0b1220] text-[#ffffff] font-[Poppins]">
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-95 shadow-lg z-50 border-b border-blue-500">
+  <header class="fixed top-0 left-0 w-full bg-[#0b1220]/90 backdrop-blur-md shadow-xl z-50 border-b border-[#f59e0b]">
     <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
       <div class="flex items-center space-x-2">
-        <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
-          <span class="font-bold text-white">MB</span>
+        <div class="w-10 h-10 bg-[#f59e0b] rounded-lg flex items-center justify-center shadow-lg">
+          <span class="font-bold text-[#0b1220]">MB</span>
         </div>
         <div>
-          <h1 class="text-xl font-bold text-blue-400">MR.BUDDY</h1>
-          <p class="text-xs text-gray-400">Transport Batam</p>
+          <h1 class="text-xl font-bold text-[#f59e0b]">MR.BUDDY</h1>
+          <p class="text-xs text-gray-300">Transport Batam</p>
         </div>
       </div>
       
       <nav class="hidden md:flex space-x-8">
-        <a href="#home" class="hover:text-blue-400 font-medium">Home</a>
-        <a href="#about" class="hover:text-blue-400 font-medium">Tentang</a>
-        <a href="#services" class="hover:text-blue-400 font-medium">Layanan</a>
-        <a href="#cars" class="hover:text-blue-400 font-medium">Armada</a>
-        <a href="#destinations" class="hover:text-blue-400 font-medium">Destinasi</a>
-        <a href="#contact" class="hover:text-blue-400 font-medium">Kontak</a>
+        <a href="#home" class="hover:text-[#f59e0b] font-medium transition-colors">Home</a>
+        <a href="#about" class="hover:text-[#f59e0b] font-medium transition-colors">Tentang</a>
+        <a href="#services" class="hover:text-[#f59e0b] font-medium transition-colors">Layanan</a>
+        <a href="#cars" class="hover:text-[#f59e0b] font-medium transition-colors">Armada</a>
+        <a href="#destinations" class="hover:text-[#f59e0b] font-medium transition-colors">Destinasi</a>
+        <a href="#contact" class="hover:text-[#f59e0b] font-medium transition-colors">Kontak</a>
       </nav>
 
       <a href="https://wa.me/6285767816101" target="_blank" 
-         class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg font-semibold flex items-center space-x-2">
+         class="bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 shadow-lg transition-all">
         <i class="fab fa-whatsapp"></i>
         <span>Booking Now</span>
       </a>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- ✅ 1️⃣ HERO SECTION - DIPERBAIKI SESUAI GAMBAR -->
   <section id="home" class="hero-bg min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
     <div class="max-w-4xl">
-      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-        FAST AND EASY WAY TO  <span class="text-blue-400">RENT A CAR</span> DI KOTA BATAM
+      <!-- JUDUL UTAMA -->
+      <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+        FAST AND EASY WAY TO <span class="text-[#f59e0b]">RENT A CAR</span>
       </h1>
-      <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+      
+      <!-- SUBJUDUL -->
+      <p class="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
         Melayani Sewa Mobil, Tour & Travel dengan Armada Terbaru, Driver Profesional, dan Harga Terjangkau
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="https://wa.me/6285767816101?text=Halo%20MR.BUDDY,%20saya%20ingin%20booking%20rental%20mobil" 
-           target="_blank"
-           class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg transition-all">
-          <i class="fab fa-whatsapp mr-2"></i>BOOKING VIA WHATSAPP
-        </a>
-        <a href="#cars" 
-           class="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
-          LIHAT ARMADA KAMI
-        </a>
+      
+      <!-- TOMBOL UTAMA -->
+      <a href="https://wa.me/6285767816101?text=Halo%20MR.BUDDY,%20saya%20ingin%20booking%20rental%20mobil" 
+         target="_blank"
+         class="inline-block bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-xl px-12 py-6 rounded-xl shadow-lg transition-all hover:scale-105">
+        <i class="fab fa-whatsapp mr-3"></i>BOOKING VIA WHATSAPP
+      </a>
+    </div>
+  </section>
+
+  <!-- TENTANG KAMI -->
+  <section id="about" class="py-24 bg-[#111827]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">TENTANG KAMI</h2>
+      <p class="text-gray-300 text-center mb-16 max-w-3xl mx-auto text-lg">MR.BUDDY Transport Batam adalah penyedia jasa rental mobil terpercaya dengan pengalaman lebih dari 10 tahun melayani pelanggan di seluruh Batam dan sekitarnya.</p>
+      
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="bg-[#0b1220] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
+          <div class="text-[#f59e0b] text-5xl mb-6"><i class="fas fa-car"></i></div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Armada Terbaru</h3>
+          <p class="text-gray-400">Selalu menggunakan mobil dengan kondisi prima dan terawat untuk kenyamanan Anda</p>
+        </div>
+        
+        <div class="bg-[#0b1220] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
+          <div class="text-[#f59e0b] text-5xl mb-6"><i class="fas fa-user-tie"></i></div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Driver Profesional</h3>
+          <p class="text-gray-400">Driver berpengalaman, ramah, dan menguasai seluruh rute di Batam dan Kepri</p>
+        </div>
+        
+        <div class="bg-[#0b1220] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
+          <div class="text-[#f59e0b] text-5xl mb-6"><i class="fas fa-handshake"></i></div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Harga Terjangkau</h3>
+          <p class="text-gray-400">Harga transparan tanpa biaya tersembunyi, dengan paket yang bisa disesuaikan</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- LAYANAN -->
-  <section id="services" class="py-20 bg-gray-800">
+  <section id="services" class="py-24 bg-[#0b1220]">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-4">LAYANAN KAMI</h2>
-      <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">Kami menyediakan berbagai layanan transportasi untuk kebutuhan perjalanan Anda</p>
+      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">LAYANAN KAMI</h2>
+      <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto text-lg">Kami menyediakan berbagai layanan transportasi untuk kebutuhan perjalanan Anda</p>
       
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-gray-900 p-8 rounded-xl text-center hover:bg-gray-850 transition-all">
-          <div class="text-blue-400 text-4xl mb-4">🚗</div>
-          <h3 class="text-xl font-bold mb-3">Rental Harian/Mingguan</h3>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="bg-[#111827] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
+          <div class="text-[#f59e0b] text-5xl mb-6">🚗</div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Rental Harian/Mingguan</h3>
           <p class="text-gray-400">Sewa mobil dengan driver profesional atau lepas kunci untuk kebutuhan pribadi dan bisnis</p>
         </div>
         
-        <div class="bg-gray-900 p-8 rounded-xl text-center hover:bg-gray-850 transition-all">
-          <div class="text-blue-400 text-4xl mb-4">🏞️</div>
-          <h3 class="text-xl font-bold mb-3">Tour & Wisata</h3>
+        <div class="bg-[#111827] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
+          <div class="text-[#f59e0b] text-5xl mb-6">🏞️</div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Tour & Wisata</h3>
           <p class="text-gray-400">Paket wisata dalam dan luar kota dengan itinerary yang menarik dan harga bersaing</p>
         </div>
         
-        <div class="bg-gray-900 p-8 rounded-xl text-center hover:bg-gray-850 transition-all">
-          <div class="text-blue-400 text-4xl mb-4">🏢</div>
-          <h3 class="text-xl font-bold mb-3">Layanan Perusahaan</h3>
+        <div class="bg-[#111827] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
+          <div class="text-[#f59e0b] text-5xl mb-6">🏢</div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Layanan Perusahaan</h3>
           <p class="text-gray-400">Kerjasama jangka panjang untuk perusahaan, instansi pemerintah, dan event organizer</p>
         </div>
       </div>
@@ -117,67 +151,67 @@
   </section>
 
   <!-- ARMADA MOBIL -->
-  <section id="cars" class="py-20 bg-gray-900">
+  <section id="cars" class="py-24 bg-[#111827]">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-4">ARMADA KAMI</h2>
-      <p class="text-gray-400 text-center mb-12">Pilih mobil sesuai kebutuhan perjalanan Anda</p>
+      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">ARMADA KAMI</h2>
+      <p class="text-gray-400 text-center mb-16 text-lg">Pilih mobil sesuai kebutuhan perjalanan Anda</p>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
         <!-- Avanza 2024 -->
-        <div class="bg-gray-800 rounded-xl overflow-hidden car-card border border-gray-700">
-          <div class="h-48 bg-gray-700 overflow-hidden">
+        <div class="bg-[#0b1220] rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 hover:shadow-[#f59e0b]/30 transition-all duration-300 border border-gray-800">
+          <div class="h-52 bg-gray-700 overflow-hidden">
             <img src="avanza-2024.jpg" alt="Toyota Avanza 2024" class="w-full h-full object-cover">
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-blue-400 mb-2">Toyota Avanza 2024</h3>
-            <p class="text-gray-400 mb-4">Matic • 7 Seat • AC Double Blower • Full Multimedia</p>
-            <div class="mb-4">
+          <div class="p-7">
+            <h3 class="text-2xl font-bold text-[#f59e0b] mb-3">Toyota Avanza 2024</h3>
+            <p class="text-gray-400 mb-5">Matic • 7 Seat • AC Double Blower • Full Multimedia</p>
+            <div class="mb-6">
               <span class="text-2xl font-bold text-green-400">Rp 350.000 - 600.000</span>
               <span class="text-gray-400 text-sm ml-2">/ hari</span>
             </div>
             <a href="https://wa.me/6285767816101?text=Halo%20MR.BUDDY,%20saya%20mau%20sewa%20Toyota%20Avanza%202024" 
                target="_blank"
-               class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg font-semibold transition-all">
+               class="block w-full bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-lg py-4 rounded-xl shadow-lg transition-all text-center">
               <i class="fab fa-whatsapp mr-2"></i>BOOKING SEKARANG
             </a>
           </div>
         </div>
 
         <!-- Avanza 2025 -->
-        <div class="bg-gray-800 rounded-xl overflow-hidden car-card border border-gray-700">
-          <div class="h-48 bg-gray-700 overflow-hidden">
+        <div class="bg-[#0b1220] rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 hover:shadow-[#f59e0b]/30 transition-all duration-300 border border-gray-800">
+          <div class="h-52 bg-gray-700 overflow-hidden">
             <img src="avanza-2025.jpg" alt="Toyota Avanza 2025" class="w-full h-full object-cover">
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-blue-400 mb-2">Toyota Avanza 2025</h3>
-            <p class="text-gray-400 mb-4">Matic Terbaru • 7 Seat • Premium Sound System</p>
-            <div class="mb-4">
+          <div class="p-7">
+            <h3 class="text-2xl font-bold text-[#f59e0b] mb-3">Toyota Avanza 2025</h3>
+            <p class="text-gray-400 mb-5">Matic Terbaru • 7 Seat • Premium Sound System</p>
+            <div class="mb-6">
               <span class="text-2xl font-bold text-green-400">Rp 350.000 - 600.000</span>
               <span class="text-gray-400 text-sm ml-2">/ hari</span>
             </div>
             <a href="https://wa.me/6285767816101?text=Halo%20MR.BUDDY,%20saya%20mau%20sewa%20Toyota%20Avanza%202025" 
                target="_blank"
-               class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg font-semibold transition-all">
+               class="block w-full bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-lg py-4 rounded-xl shadow-lg transition-all text-center">
               <i class="fab fa-whatsapp mr-2"></i>BOOKING SEKARANG
             </a>
           </div>
         </div>
 
         <!-- Hiace 2018 -->
-        <div class="bg-gray-800 rounded-xl overflow-hidden car-card border border-gray-700">
-          <div class="h-48 bg-gray-700 overflow-hidden">
+        <div class="bg-[#0b1220] rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 hover:shadow-[#f59e0b]/30 transition-all duration-300 border border-gray-800">
+          <div class="h-52 bg-gray-700 overflow-hidden">
             <img src="hiace-2018.jpg" alt="Toyota Hiace 2018" class="w-full h-full object-cover">
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-blue-400 mb-2">Toyota Hiace 2018</h3>
-            <p class="text-gray-400 mb-4">Manual • 15 Seat • Kabin Luas • Nyaman untuk Grup</p>
-            <div class="mb-4">
+          <div class="p-7">
+            <h3 class="text-2xl font-bold text-[#f59e0b] mb-3">Toyota Hiace 2018</h3>
+            <p class="text-gray-400 mb-5">Manual • 15 Seat • Kabin Luas • Nyaman untuk Grup</p>
+            <div class="mb-6">
               <span class="text-2xl font-bold text-green-400">Rp 600.000 - 1.200.000</span>
               <span class="text-gray-400 text-sm ml-2">/ hari</span>
             </div>
             <a href="https://wa.me/6285767816101?text=Halo%20MR.BUDDY,%20saya%20mau%20sewa%20Toyota%20Hiace%202018" 
                target="_blank"
-               class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg font-semibold transition-all">
+               class="block w-full bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-lg py-4 rounded-xl shadow-lg transition-all text-center">
               <i class="fab fa-whatsapp mr-2"></i>BOOKING SEKARANG
             </a>
           </div>
@@ -187,100 +221,56 @@
   </section>
 
   <!-- DESTINASI WISATA -->
-  <section id="destinations" class="py-20 bg-gray-800">
+  <section id="destinations" class="py-24 bg-[#0b1220]">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-4">DESTINASI WISATA</h2>
-      <p class="text-gray-400 text-center mb-12">Tempat-tempat yang sudah dikunjungi customer kami dan rekomendasi destinasi di Kepri</p>
+      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">DESTINASI WISATA</h2>
+      <p class="text-gray-400 text-center mb-16 text-lg">Tempat-tempat yang sudah dikunjungi customer kami dan rekomendasi destinasi di Kepri</p>
       
       <!-- A. Tempat yang sudah dikunjungi customer kami -->
-      <div class="mb-16">
-        <h3 class="text-2xl font-bold text-center text-white mb-8">Tempat yang Sudah Dikunjungi Customer Kami</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="mb-20">
+        <h3 class="text-2xl font-bold text-center text-white mb-10">Tempat yang Sudah Dikunjungi Customer Kami</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <!-- 1. Jembatan Barelang -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
-            <div class="h-40 overflow-hidden">
-              <img src="jembatan-barelang.jpg" alt="Jembatan Barelang" class="w-full h-full object-cover">
+          <div class="bg-[#111827] rounded-2xl overflow-hidden visited-card shadow-lg border border-gray-800">
+            <div class="h-48 overflow-hidden">
+              <img src="jembatan-barelang.jpg" alt="Jembatan Barelang" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
-            <div class="p-4">
-              <h4 class="font-bold text-lg mb-2 text-blue-400">JEMBATAN BARELANG</h4>
-              <p class="text-gray-400 text-sm">Ikon Batam yang menghubungkan beberapa pulau dengan pemandangan laut yang menakjubkan</p>
+            <div class="p-6">
+              <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">JEMBATAN BARELANG</h4>
+              <p class="text-gray-400">Ikon Batam yang menghubungkan beberapa pulau dengan pemandangan laut yang menakjubkan</p>
             </div>
           </div>
           
           <!-- 2. Pantai Vio Vio -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
-            <div class="h-40 overflow-hidden">
-              <img src="pantai-vio-vio.jpg" alt="Pantai Vio Vio" class="w-full h-full object-cover">
+          <div class="bg-[#111827] rounded-2xl overflow-hidden visited-card shadow-lg border border-gray-800">
+            <div class="h-48 overflow-hidden">
+              <img src="pantai-vio-vio.jpg" alt="Pantai Vio Vio" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
-            <div class="p-4">
-              <h4 class="font-bold text-lg mb-2 text-blue-400">PANTAI VIO VIO</h4>
-              <p class="text-gray-400 text-sm">Pantai dengan pemandangan sunset yang eksotis dan spot foto yang instagramable</p>
+            <div class="p-6">
+              <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">PANTAI VIO VIO</h4>
+              <p class="text-gray-400">Pantai dengan pemandangan sunset yang eksotis dan spot foto yang instagramable</p>
             </div>
           </div>
           
           <!-- 3. Pantai Glory Melur -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
-            <div class="h-40 overflow-hidden">
-              <img src="pantai-glory-melur.jpg" alt="Pantai Glory Melur" class="w-full h-full object-cover">
+          <div class="bg-[#111827] rounded-2xl overflow-hidden visited-card shadow-lg border border-gray-800">
+            <div class="h-48 overflow-hidden">
+              <img src="pantai-glory-melur.jpg" alt="Pantai Glory Melur" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
-            <div class="p-4">
-              <h4 class="font-bold text-lg mb-2 text-blue-400">PANTAI GLORY MELUR</h4>
-              <p class="text-gray-400 text-sm">Pantai dengan fasilitas lengkap, restoran seafood, dan watersport seru</p>
+            <div class="p-6">
+              <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">PANTAI GLORY MELUR</h4>
+              <p class="text-gray-400">Pantai dengan fasilitas lengkap, restoran seafood, dan watersport seru</p>
             </div>
           </div>
           
           <!-- 4. Sleeping Temple Buddha -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
-            <div class="h-40 overflow-hidden">
-              <img src="sleeping-tample-budha.jpg" alt="Sleeping Temple Buddha" class="w-full h-full object-cover">
+          <div class="bg-[#111827] rounded-2xl overflow-hidden visited-card shadow-lg border border-gray-800">
+            <div class="h-48 overflow-hidden">
+              <img src="sleeping-tample-budha.jpg" alt="Sleeping Temple Buddha" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
-            <div class="p-4">
-              <h4 class="font-bold text-lg mb-2 text-blue-400">SLEEPING TEMPLE BUDDHA</h4>
-              <p class="text-gray-400 text-sm">Candi Buddha dengan patung Buddha tidur yang megah dan atmosfer spiritual yang tenang</p>
-            </div>
-          </div>
-          
-          <!-- 5. Gunung Bintan -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
-            <div class="h-40 overflow-hidden">
-              <img src="gunung-bintan.jpg" alt="Gunung Bintan" class="w-full h-full object-cover">
-            </div>
-            <div class="p-4">
-              <h4 class="font-bold text-lg mb-2 text-blue-400">GUNUNG BINTAN</h4>
-              <p class="text-gray-400 text-sm">Spot pendakian dengan pemandangan panorama Kepulauan Riau yang spektakuler</p>
-            </div>
-          </div>
-          
-          <!-- 6. Leke Lagoi Bay -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
-            <div class="h-40 overflow-hidden">
-              <img src="leke-lagoi-bay.jpg.jpeg" alt="Leke Lagoi Bay" class="w-full h-full object-cover">
-            </div>
-            <div class="p-4">
-              <h4 class="font-bold text-lg mb-2 text-blue-400">LEKE LAGOI BAY</h4>
-              <p class="text-gray-400 text-sm">Teluk dengan pantai eksklusif dan resor mewah untuk liburan keluarga</p>
-            </div>
-          </div>
-          
-          <!-- 7. Vihara Patung Seribu -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
-            <div class="h-40 overflow-hidden">
-              <img src="vihara-patung-seribu.jpg" alt="Vihara Patung Seribu" class="w-full h-full object-cover">
-            </div>
-            <div class="p-4">
-              <h4 class="font-bold text-lg mb-2 text-blue-400">VIHARA PATUNG SERIBU</h4>
-              <p class="text-gray-400 text-sm">Vihara unik dengan ribuan patung Buddha dalam berbagai posisi dan ukuran</p>
-            </div>
-          </div>
-          
-          <!-- 8. Pantai Trikora -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
-            <div class="h-40 overflow-hidden">
-              <img src="pantai-trikora.jpg" alt="Pantai Trikora" class="w-full h-full object-cover">
-            </div>
-            <div class="p-4">
-              <h4 class="font-bold text-lg mb-2 text-blue-400">PANTAI TRIKORA</h4>
-              <p class="text-gray-400 text-sm">Pantai dengan pasir putih panjang, air jernih, dan pepohonan kelapa yang rindang</p>
+            <div class="p-6">
+              <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">SLEEPING TEMPLE BUDDHA</h4>
+              <p class="text-gray-400">Candi Buddha dengan patung Buddha tidur yang megah dan atmosfer spiritual yang tenang</p>
             </div>
           </div>
         </div>
@@ -288,98 +278,98 @@
       
       <!-- B. Rekomendasi Destinasi di Kepri -->
       <div>
-        <h3 class="text-2xl font-bold text-center text-white mb-8">Rekomendasi Destinasi di Kepri</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <h3 class="text-2xl font-bold text-center text-white mb-10">Rekomendasi Destinasi di Kepri</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <!-- 1. Museum Raja Ali Haji -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden destination-card">
-            <div class="h-48 overflow-hidden">
-              <img src="museum-raja-ali-haji.jpg" alt="Museum Raja Ali Haji" class="w-full h-full object-cover">
+          <div class="bg-[#111827] rounded-2xl overflow-hidden destination-card shadow-lg border border-gray-800">
+            <div class="h-56 overflow-hidden">
+              <img src="museum-raja-ali-haji.jpg" alt="Museum Raja Ali Haji" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
-            <div class="p-6">
-              <h4 class="font-bold text-xl mb-2 text-blue-400">MUSEUM RAJA ALI HAJI</h4>
-              <p class="text-gray-400 mb-4">Museum sejarah dan budaya Melayu Riau yang menyimpan warisan budaya dan naskah kuno</p>
+            <div class="p-7">
+              <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">MUSEUM RAJA ALI HAJI</h4>
+              <p class="text-gray-400 mb-5">Museum sejarah dan budaya Melayu Riau yang menyimpan warisan budaya dan naskah kuno</p>
               <div class="flex justify-between items-center">
-                <span class="text-yellow-400">
+                <span class="text-yellow-400 text-lg">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="far fa-star"></i>
                 </span>
-                <span class="text-sm text-gray-400">4/5</span>
+                <span class="text-gray-400">4/5</span>
               </div>
             </div>
           </div>
           
           <!-- 2. Pantai Indah Mutiara -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden destination-card">
-            <div class="h-48 overflow-hidden">
-              <img src="pantai-indah-mutiara.jpg" alt="Pantai Indah Mutiara" class="w-full h-full object-cover">
+          <div class="bg-[#111827] rounded-2xl overflow-hidden destination-card shadow-lg border border-gray-800">
+            <div class="h-56 overflow-hidden">
+              <img src="pantai-indah-mutiara.jpg" alt="Pantai Indah Mutiara" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
-            <div class="p-6">
-              <h4 class="font-bold text-xl mb-2 text-blue-400">PANTAI INDAH MUTIARA</h4>
-              <p class="text-gray-400 mb-4">Pantai di Bengkong dengan pemandangan laut tenang dan fasilitas keluarga yang lengkap</p>
+            <div class="p-7">
+              <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">PANTAI INDAH MUTIARA</h4>
+              <p class="text-gray-400 mb-5">Pantai di Bengkong dengan pemandangan laut tenang dan fasilitas keluarga yang lengkap</p>
               <div class="flex justify-between items-center">
-                <span class="text-yellow-400">
+                <span class="text-yellow-400 text-lg">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
                 </span>
-                <span class="text-sm text-gray-400">4.5/5</span>
+                <span class="text-gray-400">4.5/5</span>
               </div>
             </div>
           </div>
           
           <!-- 3. Pulau Mubud -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden destination-card">
-            <div class="h-48 overflow-hidden">
-              <img src="pulau-mubud.jpeg" alt="Pulau Mubud" class="w-full h-full object-cover">
+          <div class="bg-[#111827] rounded-2xl overflow-hidden destination-card shadow-lg border border-gray-800">
+            <div class="h-56 overflow-hidden">
+              <img src="pulau-mubud.jpeg" alt="Pulau Mubud" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
-            <div class="p-6">
-              <h4 class="font-bold text-xl mb-2 text-blue-400">PULAU MUBUD</h4>
-              <p class="text-gray-400 mb-4">Pulau eksotis dengan pantai pasir putih dan air laut jernih untuk snorkeling dan diving</p>
+            <div class="p-7">
+              <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">PULAU MUBUD</h4>
+              <p class="text-gray-400 mb-5">Pulau eksotis dengan pantai pasir putih dan air laut jernih untuk snorkeling dan diving</p>
               <div class="flex justify-between items-center">
-                <span class="text-yellow-400">
+                <span class="text-yellow-400 text-lg">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                 </span>
-                <span class="text-sm text-gray-400">5/5</span>
+                <span class="text-gray-400">5/5</span>
               </div>
             </div>
           </div>
           
           <!-- 4. Kelong Black Coral -->
-          <div class="bg-gray-900 rounded-xl overflow-hidden destination-card">
-            <div class="h-48 overflow-hidden">
-              <img src="kelong-bintan-black-coral.jpg" alt="Kelong Black Coral" class="w-full h-full object-cover">
+          <div class="bg-[#111827] rounded-2xl overflow-hidden destination-card shadow-lg border border-gray-800">
+            <div class="h-56 overflow-hidden">
+              <img src="kelong-bintan-black-coral.jpg" alt="Kelong Black Coral" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
-            <div class="p-6">
-              <h4 class="font-bold text-xl mb-2 text-blue-400">KELONG BLACK CORAL</h4>
-              <p class="text-gray-400 mb-4">Kelong tradisional dengan restoran seafood dan pemandangan sunset yang memukau</p>
+            <div class="p-7">
+              <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">KELONG BLACK CORAL</h4>
+              <p class="text-gray-400 mb-5">Kelong tradisional dengan restoran seafood dan pemandangan sunset yang memukau</p>
               <div class="flex justify-between items-center">
-                <span class="text-yellow-400">
+                <span class="text-yellow-400 text-lg">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
                 </span>
-                <span class="text-sm text-gray-400">4.5/5</span>
+                <span class="text-gray-400">4.5/5</span>
               </div>
             </div>
           </div>
         </div>
         
-        <div class="text-center mt-12">
+        <div class="text-center mt-16">
           <a href="https://wa.me/6285767816101?text=Halo%20MR.BUDDY,%20saya%20ingin%20konsultasi%20tentang%20destinasi%20wisata%20di%20Kepri" 
              target="_blank"
-             class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
-            <i class="fas fa-map-marked-alt mr-2"></i>KONSULTASI DESTINASI WISATA
+             class="inline-block bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-lg px-10 py-5 rounded-xl shadow-lg transition-all hover:scale-105">
+            <i class="fas fa-map-marked-alt mr-3"></i>KONSULTASI DESTINASI WISATA
           </a>
         </div>
       </div>
@@ -387,61 +377,75 @@
   </section>
 
   <!-- KONTAK -->
-  <section id="contact" class="py-20 bg-gray-800">
+  <section id="contact" class="py-24 bg-[#111827]">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-blue-400 mb-6">HUBUNGI KAMI</h2>
-      <p class="text-gray-300 text-lg mb-8">Ready melayani perjalanan Anda 24/7</p>
+      <h2 class="text-4xl font-bold text-[#f59e0b] mb-6">HUBUNGI KAMI</h2>
+      <p class="text-gray-300 text-xl mb-12">Ready melayani perjalanan Anda 24/7</p>
       
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <div class="bg-gray-900 p-6 rounded-xl">
-          <div class="text-3xl text-green-400 mb-4">
+      <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <div class="bg-[#0b1220] p-8 rounded-2xl shadow-lg border border-gray-800">
+          <div class="text-[#f59e0b] text-5xl mb-6">
             <i class="fab fa-whatsapp"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
-          <p class="text-gray-400 mb-4">Fast Response</p>
+          <h3 class="text-2xl font-bold mb-3 text-white">WhatsApp</h3>
+          <p class="text-gray-400 mb-6 text-lg">Fast Response</p>
           <a href="https://wa.me/6285767816101" target="_blank" 
-             class="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold">
+             class="inline-block bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-lg px-8 py-4 rounded-xl shadow-lg transition-all">
             CHAT SEKARANG
           </a>
         </div>
         
-        <div class="bg-gray-900 p-6 rounded-xl">
-          <div class="text-3xl text-blue-400 mb-4">
+        <div class="bg-[#0b1220] p-8 rounded-2xl shadow-lg border border-gray-800">
+          <div class="text-[#f59e0b] text-5xl mb-6">
             <i class="fas fa-map-marker-alt"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2">Lokasi</h3>
-          <p class="text-gray-400">Batam, Indonesia</p>
-          <p class="text-sm text-gray-500 mt-2">Melayani seluruh area batam dan sekitarnya</p>
+          <h3 class="text-2xl font-bold mb-3 text-white">Lokasi</h3>
+          <p class="text-gray-400 text-lg">Batam, Indonesia</p>
+          <p class="text-gray-500 mt-3">Melayani seluruh area batam dan sekitarnya</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-900 py-12 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <div class="flex justify-center items-center space-x-3 mb-6">
-        <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
-          <span class="font-bold text-white text-xl">MB</span>
+  <footer class="bg-[#0b1220] py-16 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+        <div class="flex items-center space-x-4 mb-8 md:mb-0">
+          <div class="w-16 h-16 bg-[#f59e0b] rounded-2xl flex items-center justify-center shadow-lg">
+            <span class="font-bold text-[#0b1220] text-2xl">MB</span>
+          </div>
+          <div class="text-left">
+            <h3 class="text-2xl font-bold text-[#f59e0b]">MR.BUDDY</h3>
+            <p class="text-gray-400">Transport Batam</p>
+            <p class="text-gray-500 text-sm mt-2">"Melayani dengan Hati, Mengutamakan Kenyamanan"</p>
+          </div>
         </div>
-        <div class="text-left">
-          <h3 class="text-xl font-bold text-blue-400">MR.BUDDY</h3>
-          <p class="text-sm text-gray-400">Transport Batam</p>
+        
+        <div class="text-center md:text-right">
+          <h4 class="text-xl font-bold text-white mb-4">Kontak</h4>
+          <a href="https://wa.me/6285767816101" target="_blank" class="text-[#f59e0b] hover:text-[#e5900a] text-lg font-medium">
+            <i class="fab fa-whatsapp mr-2"></i>+62 857-6781-6101
+          </a>
+          <p class="text-gray-400 mt-2">batam@mr-buddy.com</p>
         </div>
       </div>
       
-      <p class="text-gray-400 mb-6">Melayani dengan hati, mengutamakan kenyamanan dan keamanan perjalanan Anda</p>
-      
-      <div class="flex justify-center space-x-6 mb-6">
-        <a href="#home" class="text-gray-400 hover:text-blue-400">Home</a>
-        <a href="#about" class="text-gray-400 hover:text-blue-400">Tentang</a>
-        <a href="#services" class="text-gray-400 hover:text-blue-400">Layanan</a>
-        <a href="#cars" class="text-gray-400 hover:text-blue-400">Armada</a>
-        <a href="#destinations" class="text-gray-400 hover:text-blue-400">Destinasi</a>
-        <a href="#contact" class="text-gray-400 hover:text-blue-400">Kontak</a>
+      <div class="flex flex-wrap justify-center gap-8 mb-8">
+        <a href="#home" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Home</a>
+        <a href="#about" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Tentang</a>
+        <a href="#services" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Layanan</a>
+        <a href="#cars" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Armada</a>
+        <a href="#destinations" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Destinasi</a>
+        <a href="#contact" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Kontak</a>
       </div>
       
-      <p class="text-gray-500 text-sm">&copy; 2026 MR.BUDDY - Transport Batam. All rights reserved.</p>
+      <div class="border-t border-gray-800 pt-8 text-center">
+        <p class="text-gray-500">
+          &copy; 2024 MR.BUDDY - Transport Batam. All rights reserved. | 
+          <span class="text-gray-400">Professional Car Rental Service</span>
+        </p>
+      </div>
     </div>
   </footer>
 
