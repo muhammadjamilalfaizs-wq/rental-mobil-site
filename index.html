@@ -1,2232 +1,386 @@
+Travel web
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#4361ee">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Personal Website">
-    
-    <title>Produktivy Apps</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #4cc9f0;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4ade80;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --gray: #6c757d;
-            --gray-light: #e9ecef;
-        }
-        
-        body {
-            background-color: #f5f7ff;
-            color: var(--dark);
-            line-height: 1.6;
-            padding-bottom: 80px; /* Untuk mobile nav */
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-        
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Navigation */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .tab-btn {
-            background-color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .tab-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        }
-        
-        .tab-btn.active {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .tab-btn i {
-            font-size: 1.1rem;
-        }
-        
-        /* Mobile Navigation */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            padding: 10px;
-        }
-        
-        .mobile-nav-btn {
-            flex: 1;
-            text-align: center;
-            padding: 12px 5px;
-            border: none;
-            background: none;
-            font-size: 0.8rem;
-            color: #666;
-        }
-        
-        .mobile-nav-btn.active {
-            color: var(--primary);
-        }
-        
-        .mobile-nav-btn i {
-            display: block;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-        
-        /* Tab Content */
-        .tab-content {
-            display: none;
-            background-color: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 3rem;
-        }
-        
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Section Headers */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--gray-light);
-        }
-        
-        .section-header h2 {
-            color: var(--primary);
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .section-header h2 i {
-            color: var(--accent);
-        }
-        
-        /* Form Styles */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--gray-light);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border 0.3s;
-        }
-        
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--accent);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.2);
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        /* Button Styles */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .btn i {
-            margin-right: 8px;
-        }
-        
-        .btn-small {
-            padding: 8px 16px;
-            font-size: 0.9rem;
-        }
-        
-        .btn-success {
-            background-color: var(--success);
-        }
-        
-        .btn-warning {
-            background-color: var(--warning);
-        }
-        
-        .btn-danger {
-            background-color: var(--danger);
-        }
-        
-        /* Card Styles */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            border-left: 5px solid var(--primary);
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
-        }
-        
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .card p {
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .card .amount {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin: 1rem 0;
-        }
-        
-        /* Calendar & Apps Integration */
-        .integration-section {
-            margin-top: 3rem;
-            background-color: #f8f9ff;
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px dashed var(--accent);
-        }
-        
-        .integration-section h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .apps-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .app-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            width: 180px;
-            text-align: center;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-        
-        .app-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-        }
-        
-        .app-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .app-card h4 {
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .app-card p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: var(--gray);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--gray-light);
-            margin-top: 2rem;
-        }
-        
-        /* Data List */
-        .data-list {
-            margin-top: 2rem;
-        }
-        
-        .data-item {
-            background-color: var(--light);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--primary);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .data-info h4 {
-            color: var(--primary);
-            margin-bottom: 0.3rem;
-        }
-        
-        .data-info p {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        .data-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        /* Notification Badge */
-        .badge {
-            background-color: #4ade80;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-        
-        /* Alarm Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .tabs {
-                display: none;
-            }
-            
-            .mobile-nav {
-                display: flex;
-            }
-            
-            body {
-                padding-bottom: 70px;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .cards-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            
-            .btn, .tab-btn, input, select {
-                min-height: 44px;
-                font-size: 16px;
-            }
-            
-            .tab-content {
-                padding: 1.5rem;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .mobile-nav {
-                display: none;
-            }
-        }
-        
-        /* Loading Screen */
-        #loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #4361ee, #3a0ca3);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s;
-        }
-        
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid white;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Install Prompt */
-        #installPrompt {
-            position: fixed;
-            bottom: 80px;
-            left: 15px;
-            right: 15px;
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-            z-index: 1001;
-            display: none;
-        }
-        
-        #installPrompt.show {
-            display: block;
-            animation: slideUp 0.3s ease;
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MR.BUDDY - FAST AND EASY WAY TO RENT A CAR</title>
+  <meta name="description" content="MR.BUDDY Rental Mobil Batam - Sewa Mobil Murah, Tour & Travel, Armada Terbaru, Harga Terjangkau">
+  <!-- PAKAI CDN UNTUK SEMUA -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-bg {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                  url('https://raw.githubusercontent.com/username-anda/mr-buddy-website/main/images/hero/background.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .car-card:hover { 
+      transform: translateY(-5px); 
+      transition: 0.3s; 
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    }
+    .destination-card:hover {
+      transform: scale(1.03);
+      transition: 0.3s;
+    }
+    .visited-card {
+      transition: all 0.3s ease;
+    }
+    .visited-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+  </style>
 </head>
-<body>
-    <!-- Loading Screen -->
-    <div id="loading">
-        <div class="loader"></div>
-        <h2 style="color: white;">Personal Website</h2>
-        <p style="color: white; margin-top: 10px;">Loading...</p>
+<body class="bg-gray-900 text-white font-sans">
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-95 shadow-lg z-50 border-b border-blue-500">
+    <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+      <div class="flex items-center space-x-2">
+        <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+          <span class="font-bold text-white">MB</span>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-blue-400">MR.BUDDY</h1>
+          <p class="text-xs text-gray-400">Transport Batam</p>
+        </div>
+      </div>
+      
+      <nav class="hidden md:flex space-x-8">
+        <a href="#home" class="hover:text-blue-400 font-medium">Home</a>
+        <a href="#about" class="hover:text-blue-400 font-medium">Tentang</a>
+        <a href="#services" class="hover:text-blue-400 font-medium">Layanan</a>
+        <a href="#cars" class="hover:text-blue-400 font-medium">Armada</a>
+        <a href="#destinations" class="hover:text-blue-400 font-medium">Destinasi</a>
+        <a href="#contact" class="hover:text-blue-400 font-medium">Kontak</a>
+      </nav>
+
+      <a href="https://wa.me/6282288591214" target="_blank" 
+         class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg font-semibold flex items-center space-x-2">
+        <i class="fab fa-whatsapp"></i>
+        <span>Booking Now</span>
+      </a>
     </div>
-    
-    <!-- Install Prompt -->
-    <div id="installPrompt">
-        <h3><i class="fas fa-download"></i> Install App</h3>
-        <p>Install aplikasi ini ke homescreen untuk akses lebih cepat!</p>
-        <div style="display: flex; gap: 10px; margin-top: 15px;">
-            <button id="installCancel" class="btn" style="flex: 1; background: #ccc;">Nanti</button>
-            <button id="installConfirm" class="btn" style="flex: 1;">Install</button>
-        </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero-bg min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+    <div class="max-w-4xl">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+        FAST AND EASY WAY TO  <span class="text-blue-400">RENT A CAR</span> DI KOTA BATAM
+      </h1>
+      <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+        Melayani Sewa Mobil, Tour & Travel dengan Armada Terbaru, Driver Profesional, dan Harga Terjangkau
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/6282288591214?text=Halo%20MR.BUDDY,%20saya%20ingin%20booking%20rental%20mobil" 
+           target="_blank"
+           class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg transition-all">
+          <i class="fab fa-whatsapp mr-2"></i>BOOKING VIA WHATSAPP
+        </a>
+        <a href="#cars" 
+           class="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
+          LIHAT ARMADA KAMI
+        </a>
+      </div>
     </div>
-    
-    <!-- Alarm Modal -->
-    <div id="alarmModal" class="modal">
-        <div class="modal-content">
-            <div class="section-header">
-                <h2><i class="fas fa-bell"></i> Atur Alarm</h2>
-                <button id="closeAlarmModal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">×</button>
-            </div>
-            
-            <div class="form-group">
-                <label for="alarmName">Nama Alarm</label>
-                <input type="text" id="alarmName" placeholder="Contoh: Bangun tidur, Meeting, dll">
-            </div>
-            
-            <div class="form-group">
-                <label for="alarmTime">Waktu Alarm</label>
-                <input type="datetime-local" id="alarmTime">
-            </div>
-            
-            <div class="form-group">
-                <label for="alarmRepeat">Ulangi</label>
-                <select id="alarmRepeat">
-                    <option value="once">Sekali saja</option>
-                    <option value="daily">Setiap hari</option>
-                    <option value="weekly">Setiap minggu</option>
-                    <option value="weekdays">Hari kerja (Senin-Jumat)</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="alarmSound">Suara Alarm</label>
-                <select id="alarmSound">
-                    <option value="default">Default</option>
-                    <option value="bell">Bell</option>
-                    <option value="chime">Chime</option>
-                    <option value="beep">Beep</option>
-                </select>
-            </div>
-            
-            <button id="saveAlarm" class="btn btn-success" style="width: 100%;">
-                <i class="fas fa-save"></i> Simpan Alarm
-            </button>
+  </section>
+
+  <!-- LAYANAN -->
+  <section id="services" class="py-20 bg-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-4">LAYANAN KAMI</h2>
+      <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">Kami menyediakan berbagai layanan transportasi untuk kebutuhan perjalanan Anda</p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-900 p-8 rounded-xl text-center hover:bg-gray-850 transition-all">
+          <div class="text-blue-400 text-4xl mb-4">🚗</div>
+          <h3 class="text-xl font-bold mb-3">Rental Harian/Mingguan</h3>
+          <p class="text-gray-400">Sewa mobil dengan driver profesional atau lepas kunci untuk kebutuhan pribadi dan bisnis</p>
         </div>
+        
+        <div class="bg-gray-900 p-8 rounded-xl text-center hover:bg-gray-850 transition-all">
+          <div class="text-blue-400 text-4xl mb-4">🏞️</div>
+          <h3 class="text-xl font-bold mb-3">Tour & Wisata</h3>
+          <p class="text-gray-400">Paket wisata dalam dan luar kota dengan itinerary yang menarik dan harga bersaing</p>
+        </div>
+        
+        <div class="bg-gray-900 p-8 rounded-xl text-center hover:bg-gray-850 transition-all">
+          <div class="text-blue-400 text-4xl mb-4">🏢</div>
+          <h3 class="text-xl font-bold mb-3">Layanan Perusahaan</h3>
+          <p class="text-gray-400">Kerjasama jangka panjang untuk perusahaan, instansi pemerintah, dan event organizer</p>
+        </div>
+      </div>
     </div>
-    
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <h1><i class="fas fa-user-circle"></i> Produktivy Apps</h1>
-            <p>Kelola keuangan dan waktu Anda dengan lebih efektif dan efisien</p>
+  </section>
+
+  <!-- ARMADA MOBIL -->
+  <section id="cars" class="py-20 bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-4">ARMADA KAMI</h2>
+      <p class="text-gray-400 text-center mb-12">Pilih mobil sesuai kebutuhan perjalanan Anda</p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Avanza 2024 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden car-card border border-gray-700">
+          <div class="h-48 bg-gray-700 overflow-hidden">
+            <img src="https://raw.githubusercontent.com/username-anda/mr-buddy-website/main/images/cars/avanza-2024.jpg" 
+                 alt="Toyota Avanza 2024" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-400 mb-2">Toyota Avanza 2024</h3>
+            <p class="text-gray-400 mb-4">Matic • 7 Seat • AC Double Blower • Full Multimedia</p>
+            <div class="mb-4">
+              <span class="text-2xl font-bold text-green-400">Rp 350.000 - 600.000</span>
+              <span class="text-gray-400 text-sm ml-2">/ hari</span>
+            </div>
+            <a href="https://wa.me/6282288591214?text=Halo%20MR.BUDDY,%20saya%20mau%20sewa%20Toyota%20Avanza%202024" 
+               target="_blank"
+               class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg font-semibold transition-all">
+              <i class="fab fa-whatsapp mr-2"></i>BOOKING SEKARANG
+            </a>
+          </div>
         </div>
-    </header>
-    
-    <div class="container">
-        <!-- Desktop Tabs -->
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="money-management">
-                <i class="fas fa-money-bill-wave"></i> Money Management
-            </button>
-            <button class="tab-btn" data-tab="time-management">
-                <i class="fas fa-clock"></i> Time Management
-            </button>
-            <button class="tab-btn" data-tab="integrations">
-                <i class="fas fa-link"></i> Integrasi & Aplikasi
-            </button>
-            <button class="tab-btn" data-tab="data-view">
-                <i class="fas fa-database"></i> Data & Export
-            </button>
+
+        <!-- Avanza 2025 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden car-card border border-gray-700">
+          <div class="h-48 bg-gray-700 overflow-hidden">
+            <img src="https://raw.githubusercontent.com/username-anda/mr-buddy-website/main/images/cars/avanza-2025.jpg" 
+                 alt="Toyota Avanza 2025" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-400 mb-2">Toyota Avanza 2025</h3>
+            <p class="text-gray-400 mb-4">Matic Terbaru • 7 Seat • Premium Sound System</p>
+            <div class="mb-4">
+              <span class="text-2xl font-bold text-green-400">Rp 350.000 - 600.000</span>
+              <span class="text-gray-400 text-sm ml-2">/ hari</span>
+            </div>
+            <a href="https://wa.me/6282288591214?text=Halo%20MR.BUDDY,%20saya%20mau%20sewa%20Toyota%20Avanza%202025" 
+               target="_blank"
+               class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg font-semibold transition-all">
+              <i class="fab fa-whatsapp mr-2"></i>BOOKING SEKARANG
+            </a>
+          </div>
         </div>
-        
-        <!-- Mobile Navigation -->
-        <div class="mobile-nav">
-            <button class="mobile-nav-btn active" data-tab="money-management">
-                <i class="fas fa-money-bill-wave"></i>
-                <span>Money</span>
-            </button>
-            <button class="mobile-nav-btn" data-tab="time-management">
-                <i class="fas fa-clock"></i>
-                <span>Time</span>
-            </button>
-            <button class="mobile-nav-btn" data-tab="integrations">
-                <i class="fas fa-link"></i>
-                <span>Apps</span>
-            </button>
-            <button class="mobile-nav-btn" data-tab="data-view">
-                <i class="fas fa-database"></i>
-                <span>Data</span>
-            </button>
+
+        <!-- Hiace 2018 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden car-card border border-gray-700">
+          <div class="h-48 bg-gray-700 overflow-hidden">
+            <img src="https://raw.githubusercontent.com/username-anda/mr-buddy-website/main/images/cars/hiace-2018.jpg" 
+                 alt="Toyota Hiace 2018" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-400 mb-2">Toyota Hiace 2018</h3>
+            <p class="text-gray-400 mb-4">Manual • 15 Seat • Kabin Luas • Nyaman untuk Grup</p>
+            <div class="mb-4">
+              <span class="text-2xl font-bold text-green-400">Rp 600.000 - 1.200.000</span>
+              <span class="text-gray-400 text-sm ml-2">/ hari</span>
+            </div>
+            <a href="https://wa.me/6282288591214?text=Halo%20MR.BUDDY,%20saya%20mau%20sewa%20Toyota%20Hiace%202018" 
+               target="_blank"
+               class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg font-semibold transition-all">
+              <i class="fab fa-whatsapp mr-2"></i>BOOKING SEKARANG
+            </a>
+          </div>
         </div>
-        
-        <!-- Money Management Tab -->
-        <div class="tab-content active" id="money-management">
-            <div class="section-header">
-                <h2><i class="fas fa-coins"></i> Money Management</h2>
-                <div>
-                    <button class="btn btn-success" id="add-income">
-                        <i class="fas fa-plus"></i> Tambah Pemasukan
-                    </button>
-                    <button class="btn btn-warning" id="add-expense" style="margin-left: 10px;">
-                        <i class="fas fa-minus"></i> Tambah Pengeluaran
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Pendataan Pemasukan -->
-            <div class="form-group" id="income-form">
-                <h3><i class="fas fa-arrow-down text-success"></i> Pendataan Pemasukan</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="income-source">Pemasukan dari mana?</label>
-                        <select id="income-source">
-                            <option value="">Pilih sumber pemasukan</option>
-                            <option value="gaji">Gaji</option>
-                            <option value="bisnis">Bisnis</option>
-                            <option value="investasi">Investasi</option>
-                            <option value="hadiah">Hadiah</option>
-                            <option value="ngojol">ngojol</option>
-                            <option value="lainnya">Lainnya</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="income-date">Tanggal & Jam</label>
-                        <input type="datetime-local" id="income-date">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="income-method">Cash / M-Banking?</label>
-                        <select id="income-method">
-                            <option value="cash">Cash</option>
-                            <option value="m-banking">M-Banking</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="income-bank">M-Banking apa? (jika pilih M-Banking)</label>
-                        <select id="income-bank">
-                            <option value="">Pilih bank atau E-wallet</option>
-                            <option value="bca">BCA</option>
-                            <option value="Seabank">Seabank</option>
-                            <option value="OCBC">OCBC</option>
-                            <option value="mandiri">Mandiri</option>
-                            <option value="bri">BRI</option>
-                            <option value="bni">BNI</option>
-                            <option value="DANA">DANA</option>
-                            <option value="GOPAY">GOPAY</option>
-                            <option value="lainnya">Lainnya</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="income-amount">Jumlah Pemasukan</label>
-                    <input type="number" id="income-amount" placeholder="Masukkan jumlah pemasukan">
-                </div>
-                
-                <div class="form-group">
-                    <label for="income-notes">Catatan (opsional)</label>
-                    <textarea id="income-notes" rows="2" placeholder="Tambahkan catatan jika perlu"></textarea>
-                </div>
-                
-                <button class="btn btn-success" id="save-income">
-                    <i class="fas fa-save"></i> Simpan Pemasukan
-                </button>
-            </div>
-            
-            <!-- Pendataan Pengeluaran -->
-            <div class="form-group" id="expense-form">
-                <h3><i class="fas fa-arrow-up text-danger"></i> Pendataan Pengeluaran</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="expense-for">Pengeluaran untuk apa?</label>
-                        <input type="text" id="expense-for" placeholder="Contoh: Beli makanan, transportasi, dll">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="expense-date">Tanggal & Jam</label>
-                        <input type="datetime-local" id="expense-date">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="expense-method">Cash / M-Banking?</label>
-                        <select id="expense-method">
-                            <option value="cash">Cash</option>
-                            <option value="m-banking">M-Banking</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="expense-bank">M-Banking apa? (jika pilih M-Banking)</label>
-                        <select id="expense-bank">
-                            <option value="">Pilih bank atau E-wallet</option>
-                            <option value="Seabank">Seabank</option>
-                            <option value="OCBC">OCBC</option>
-                            <option value="bca">BCA</option>
-                            <option value="mandiri">Mandiri</option>
-                            <option value="bri">BRI</option>
-                            <option value="bni">BNI</option>
-                            <option value="DANA">DANA</option>
-                            <option value="GOPAY">GOPAY</option>
-                            <option value="lainnya">Lainnya</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="expense-amount">Jumlah Pengeluaran</label>
-                    <input type="number" id="expense-amount" placeholder="Masukkan jumlah pengeluaran">
-                </div>
-                
-                <div class="form-group">
-                    <label for="expense-notes">Catatan (opsional)</label>
-                    <textarea id="expense-notes" rows="2" placeholder="Tambahkan catatan jika perlu"></textarea>
-                </div>
-                
-                <button class="btn btn-warning" id="save-expense">
-                    <i class="fas fa-save"></i> Simpan Pengeluaran
-                </button>
-            </div>
-            
-            <!-- Tabungan & Investasi -->
-            <div class="form-group">
-                <h3><i class="fas fa-piggy-bank text-primary"></i> Tabungan & Investasi</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="saving-type">Tabung / Investasi?</label>
-                        <select id="saving-type">
-                            <option value="tabungan">Tabungan</option>
-                            <option value="investasi">Investasi</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="saving-place">Dimana? (Nama bank/platform)</label>
-                        <input type="text" id="saving-place" placeholder="Contoh: Bank BCA, Bibit, Stockbit">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="saving-method">Cash / M-Banking?</label>
-                        <select id="saving-method">
-                            <option value="cash">Cash</option>
-                            <option value="pegadaian">pegadaian</option>
-                            <option value="m-banking">M-Banking</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="saving-amount">Jumlah</label>
-                    <input type="number" id="saving-amount" placeholder="Masukkan jumlah">
-                </div>
-                
-                <div class="form-group">
-                    <label for="saving-notes">Catatan (opsional)</label>
-                    <textarea id="saving-notes" rows="2" placeholder="Tambahkan catatan jika perlu"></textarea>
-                </div>
-                
-                <button class="btn" id="save-saving">
-                    <i class="fas fa-save"></i> Simpan Data Tabungan/Investasi
-                </button>
-            </div>
-            
-            <!-- Data Ringkasan -->
-            <div class="cards-container">
-                <div class="card">
-                    <h3>Total Pemasukan <i class="fas fa-arrow-down text-success"></i></h3>
-                    <p class="amount" id="total-income">Rp 0</p>
-                    <p>Bulan ini: <span id="monthly-income">Rp 0</span></p>
-                    <p>Minggu ini: <span id="weekly-income">Rp 0</span></p>
-                </div>
-                
-                <div class="card">
-                    <h3>Total Pengeluaran <i class="fas fa-arrow-up text-danger"></i></h3>
-                    <p class="amount" id="total-expense">Rp 0</p>
-                    <p>Bulan ini: <span id="monthly-expense">Rp 0</span></p>
-                    <p>Minggu ini: <span id="weekly-expense">Rp 0</span></p>
-                </div>
-                
-                <div class="card">
-                    <h3>Saldo & Tabungan <i class="fas fa-piggy-bank text-primary"></i></h3>
-                    <p class="amount" id="total-balance">Rp 0</p>
-                    <p>Tabungan: <span id="total-saving">Rp 0</span></p>
-                    <p>Investasi: <span id="total-investment">Rp 0</span></p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Time Management Tab -->
-        <div class="tab-content" id="time-management">
-            <div class="section-header">
-                <h2><i class="fas fa-clock"></i> Time Management</h2>
-                <div>
-                    <button class="btn" id="openAlarmModal">
-                        <i class="fas fa-bell"></i> Atur Alarm
-                    </button>
-                    <button class="btn btn-success" id="add-schedule" style="margin-left: 10px;">
-                        <i class="fas fa-plus"></i> Tambah Jadwal
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Jam Kerja -->
-            <div class="form-group">
-                <h3><i class="fas fa-briefcase"></i> Jam Kerja</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="work-days">Hari apa saja?</label>
-                        <select id="work-days" multiple>
-                            <option value="senin">Senin</option>
-                            <option value="selasa">Selasa</option>
-                            <option value="rabu">Rabu</option>
-                            <option value="kamis">Kamis</option>
-                            <option value="jumat">Jumat</option>
-                            <option value="sabtu">Sabtu</option>
-                            <option value="minggu">Minggu</option>
-                        </select>
-                        <small>Tekan Ctrl untuk memilih lebih dari satu</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="work-start">Dari jam berapa?</label>
-                        <input type="time" id="work-start" value="08:00">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="work-end">Sampai jam berapa?</label>
-                        <input type="time" id="work-end" value="17:00">
-                    </div>
-                </div>
-                
-                <button class="btn" id="save-work">
-                    <i class="fas fa-save"></i> Simpan Jadwal Kerja
-                </button>
-            </div>
-            
-            <!-- Hari Main -->
-            <div class="form-group">
-                <h3><i class="fas fa-gamepad"></i> Hari Main / Rekreasi</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="play-day">Hari apa?</label>
-                        <select id="play-day">
-                            <option value="sabtu">Sabtu</option>
-                            <option value="minggu">Minggu</option>
-                            <option value="lainnya">Hari Lainnya</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="play-start">Dari jam berapa?</label>
-                        <input type="time" id="play-start" value="14:00">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="play-end">Sampai jam berapa?</label>
-                        <input type="time" id="play-end" value="20:00">
-                    </div>
-                </div>
-                
-                <button class="btn" id="save-play">
-                    <i class="fas fa-save"></i> Simpan Jadwal Main
-                </button>
-            </div>
-            
-            <!-- Jam Kuliah & Tugas -->
-            <div class="form-group">
-                <h3><i class="fas fa-graduation-cap"></i> Jam Kuliah & Tugas</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="study-days">Hari apa saja?</label>
-                        <select id="study-days" multiple>
-                            <option value="senin">Senin</option>
-                            <option value="selasa">Selasa</option>
-                            <option value="rabu">Rabu</option>
-                            <option value="kamis">Kamis</option>
-                            <option value="jumat">Jumat</option>
-                            <option value="sabtu">Sabtu</option>
-                        </select>
-                        <small>Tekan Ctrl untuk memilih lebih dari satu</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="study-start">Dari jam berapa?</label>
-                        <input type="time" id="study-start" value="18:00">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="study-end">Sampai jam berapa?</label>
-                        <input type="time" id="study-end" value="22:00">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="task-hours">Perkiraan jam untuk mengerjakan tugas (per minggu)</label>
-                    <input type="number" id="task-hours" placeholder="Contoh: 10" min="0">
-                </div>
-                
-                <button class="btn" id="save-study">
-                    <i class="fas fa-save"></i> Simpan Jadwal Kuliah & Tugas
-                </button>
-            </div>
-            
-            <!-- Jadwal Mingguan -->
-            <div class="cards-container">
-                <div class="card">
-                    <h3>Jadwal Hari Ini <i class="fas fa-calendar-day"></i></h3>
-                    <div class="data-list" id="today-schedule">
-                        <!-- Diisi oleh JavaScript -->
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <h3>Alarm Aktif <i class="fas fa-bell"></i></h3>
-                    <div class="data-list" id="active-alarms">
-                        <!-- Diisi oleh JavaScript -->
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <h3>Statistik Waktu <i class="fas fa-chart-pie"></i></h3>
-                    <p>Total jam kerja/minggu: <strong id="work-hours">0 jam</strong></p>
-                    <p>Total jam kuliah/minggu: <strong id="study-hours">0 jam</strong></p>
-                    <p>Total jam tugas/minggu: <strong id="task-hours-total">0 jam</strong></p>
-                    <p>Total waktu luang/minggu: <strong id="free-hours">0 jam</strong></p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Integrations Tab -->
-        <div class="tab-content" id="integrations">
-            <div class="section-header">
-                <h2><i class="fas fa-link"></i> Integrasi & Aplikasi</h2>
-                <p>Terhubung dengan aplikasi eksternal untuk manajemen yang lebih baik</p>
-            </div>
-            
-            <div class="integration-section">
-                <h3>Terhubung ke Kalender</h3>
-                <p>Sinkronkan jadwal Anda dengan kalender favorit Anda</p>
-                
-                <div class="apps-container">
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <i class="fab fa-google"></i>
-                        </div>
-                        <h4>Google Calendar</h4>
-                        <p>Sinkronkan jadwal dengan Google Calendar</p>
-                        <button class="btn btn-small connect-google-calendar" style="margin-top:10px;">Hubungkan</button>
-                    </div>
-                    
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <i class="fab fa-apple"></i>
-                        </div>
-                        <h4>Apple Calendar</h4>
-                        <p>Sinkronkan dengan kalender di perangkat Apple</p>
-                        <button class="btn btn-small connect-apple-calendar" style="margin-top:10px;">Export ke iCal</button>
-                    </div>
-                    
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <h4>Outlook Calendar</h4>
-                        <p>Integrasikan dengan Microsoft Outlook</p>
-                        <button class="btn btn-small connect-outlook" style="margin-top:10px;">Export</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="integration-section">
-                <h3>Alarm & Pengingat</h3>
-                <p>Atur alarm dan pengingat untuk aktivitas penting</p>
-                
-                <div class="apps-container">
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <i class="fas fa-bell"></i>
-                        </div>
-                        <h4>Alarm Bawaan</h4>
-                        <p>Atur alarm langsung dari website ini</p>
-                        <button class="btn btn-small open-alarm-modal" style="margin-top:10px;">Atur Alarm</button>
-                    </div>
-                    
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <i class="fab fa-google"></i>
-                        </div>
-                        <h4>Google Reminders</h4>
-                        <p>Buat pengingat di Google Assistant</p>
-                        <button class="btn btn-small set-google-reminder" style="margin-top:10px;">Buat Pengingat</button>
-                    </div>
-                    
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <i class="fab fa-apple"></i>
-                        </div>
-                        <h4>Apple Reminders</h4>
-                        <p>Integrasikan dengan Apple Reminders</p>
-                        <button class="btn btn-small export-to-reminders" style="margin-top:10px;">Export</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="integration-section">
-                <h3>Aplikasi Catatan (iOS)</h3>
-                <p>Terhubung dengan aplikasi catatan untuk mencatat hal penting</p>
-                
-                <div class="apps-container">
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <i class="fas fa-sticky-note"></i>
-                        </div>
-                        <h4>Apple Notes</h4>
-                        <p>Sinkronkan catatan dengan Apple Notes</p>
-                        <button class="btn btn-small export-to-notes" style="margin-top:10px;">Export Data</button>
-                    </div>
-                    
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <i class="fab fa-evernote"></i>
-                        </div>
-                        <h4>Evernote</h4>
-                        <p>Integrasikan dengan Evernote</p>
-                        <button class="btn btn-small connect-evernote" style="margin-top:10px;">Hubungkan</button>
-                    </div>
-                    
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <i class="fas fa-notes-medical"></i>
-                        </div>
-                        <h4>Notion</h4>
-                        <p>Terhubung dengan Notion untuk catatan lengkap</p>
-                        <button class="btn btn-small export-to-notion" style="margin-top:10px;">Export</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="cards-container">
-                <div class="card">
-                    <h3>Status Integrasi <i class="fas fa-plug"></i></h3>
-                    <div class="data-list" id="integration-status">
-                        <div class="data-item">
-                            <div class="data-info">
-                                <h4>Local Storage</h4>
-                                <p>Data disimpan di browser Anda</p>
-                            </div>
-                            <span class="badge">Aktif</span>
-                        </div>
-                        
-                        <div class="data-item">
-                            <div class="data-info">
-                                <h4>Browser Notification</h4>
-                                <p>Untuk alarm dan pengingat</p>
-                            </div>
-                            <button class="btn btn-small request-notification">Aktifkan</button>
-                        </div>
-                        
-                        <div class="data-item">
-                            <div class="data-info">
-                                <h4>Export Data</h4>
-                                <p>Ekspor ke file CSV/JSON</p>
-                            </div>
-                            <span class="badge">Siap</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Data & Export Tab -->
-        <div class="tab-content" id="data-view">
-            <div class="section-header">
-                <h2><i class="fas fa-database"></i> Data & Export</h2>
-                <div>
-                    <button class="btn btn-success" id="export-all">
-                        <i class="fas fa-download"></i> Export Semua Data
-                    </button>
-                    <button class="btn btn-danger" id="clear-data" style="margin-left: 10px;">
-                        <i class="fas fa-trash"></i> Hapus Data
-                    </button>
-                </div>
-            </div>
-            
-            <div class="cards-container">
-                <div class="card">
-                    <h3>Data Pemasukan <i class="fas fa-arrow-down text-success"></i></h3>
-                    <div class="data-list" id="income-list">
-                        <!-- Diisi oleh JavaScript -->
-                    </div>
-                    <button class="btn btn-small" id="export-income" style="width: 100%; margin-top: 10px;">
-                        <i class="fas fa-file-export"></i> Export Pemasukan
-                    </button>
-                </div>
-                
-                <div class="card">
-                    <h3>Data Pengeluaran <i class="fas fa-arrow-up text-danger"></i></h3>
-                    <div class="data-list" id="expense-list">
-                        <!-- Diisi oleh JavaScript -->
-                    </div>
-                    <button class="btn btn-small" id="export-expense" style="width: 100%; margin-top: 10px;">
-                        <i class="fas fa-file-export"></i> Export Pengeluaran
-                    </button>
-                </div>
-                
-                <div class="card">
-                    <h3>Data Tabungan <i class="fas fa-piggy-bank text-primary"></i></h3>
-                    <div class="data-list" id="saving-list">
-                        <!-- Diisi oleh JavaScript -->
-                    </div>
-                    <button class="btn btn-small" id="export-saving" style="width: 100%; margin-top: 10px;">
-                        <i class="fas fa-file-export"></i> Export Tabungan
-                    </button>
-                </div>
-            </div>
-            
-            <div class="integration-section">
-                <h3>Backup & Restore Data</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="backup-data">Backup Data ke File</label>
-                        <button class="btn" id="backup-data" style="width: 100%;">
-                            <i class="fas fa-save"></i> Backup Sekarang
-                        </button>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="restore-data">Restore Data dari File</label>
-                        <input type="file" id="restore-file" accept=".json" style="margin-bottom: 10px;">
-                        <button class="btn" id="restore-data" style="width: 100%;">
-                            <i class="fas fa-upload"></i> Restore Data
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>Statistik Penyimpanan <i class="fas fa-chart-bar"></i></h3>
-                <p>Total Data Pemasukan: <strong id="income-count">0</strong> entri</p>
-                <p>Total Data Pengeluaran: <strong id="expense-count">0</strong> entri</p>
-                <p>Total Data Tabungan: <strong id="saving-count">0</strong> entri</p>
-                <p>Total Alarm: <strong id="alarm-count">0</strong> alarm</p>
-                <p>Ukuran Penyimpanan: <strong id="storage-size">0 KB</strong></p>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <footer>
-            <p>Produktivy Apps &copy; 2025 | <button class="btn-small" id="installBtn" style="background: #4cc9f0; color: white;">
-                <i class="fas fa-plus-circle"></i> Tambah ke Homescreen
-            </button></p>
-            <p style="margin-top: 10px; font-size: 0.8rem;">Data disimpan secara lokal di browser Anda</p>
-        </footer>
+      </div>
     </div>
-    
-    <script>
-        // ===== GLOBAL VARIABLES =====
-        let deferredPrompt = null;
-        let notificationPermission = false;
+  </section>
+
+  <!-- DESTINASI WISATA -->
+  <section id="destinations" class="py-20 bg-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-4">DESTINASI WISATA</h2>
+      <p class="text-gray-400 text-center mb-12">Tempat-tempat yang sudah dikunjungi customer kami dan rekomendasi destinasi di Kepri</p>
+      
+      <!-- Tempat yang sudah dikunjungi customer -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-center text-white mb-8">Tempat yang Sudah Dikunjungi Customer Kami</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Jembatan Barelang -->
+          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
+            <div class="h-40 overflow-hidden">
+              <img src="https://raw.githubusercontent.com/username-anda/mr-buddy-website/main/images/destinations/jembatan-barelang.jpg" 
+                   alt="Jembatan Barelang" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <h4 class="font-bold text-lg mb-2">Jembatan Barelang</h4>
+              <p class="text-gray-400 text-sm">Ikon Batam yang menghubungkan beberapa pulau dengan pemandangan laut yang menakjubkan</p>
+            </div>
+          </div>
+          
+          <!-- Pantai Vio Vio -->
+          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
+            <div class="h-40 overflow-hidden">
+              <img src="https://raw.githubusercontent.com/username-anda/mr-buddy-website/main/images/destinations/pantai-vio-vio.jpg" 
+                   alt="Pantai Vio Vio" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <h4 class="font-bold text-lg mb-2">Pantai Vio Vio</h4>
+              <p class="text-gray-400 text-sm">Pantai dengan pemandangan sunset yang eksotis dan spot foto yang instagramable</p>
+            </div>
+          </div>
+          
+          <!-- Pantai Glory Melur -->
+          <div class="bg-gray-900 rounded-xl overflow-hidden visited-card">
+            <div class="h-40 overflow-hidden">
+              <img src="https://raw.githubusercontent.com/username-anda/mr-buddy-website/main/images/destinations/pantai-glory-melur.jpg" 
+                   alt="Pantai Glory Melur" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <h4 class="font-bold text-lg mb-2">Pantai Glory Melur</h4>
+              <p class="text-gray-400 text-sm">Pantai dengan fasilitas lengkap, restoran seafood, dan watersport seru</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Rekomendasi destinasi di Kepri -->
+      <div>
+        <h3 class="text-2xl font-bold text-center text-white mb-8">Rekomendasi Destinasi di Kepri</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Museum Raja Ali Haji -->
+          <div class="bg-gray-900 rounded-xl overflow-hidden destination-card">
+            <div class="h-48 overflow-hidden">
+              <img src="https://raw.githubusercontent.com/username-anda/mr-buddy-website/main/images/destinations/museum-raja-ali-haji.jpg" 
+                   alt="Museum Raja Ali Haji" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <h4 class="font-bold text-xl mb-2 text-blue-400">Museum Raja Ali Haji</h4>
+              <p class="text-gray-400 mb-4">Museum sejarah dan budaya Melayu Riau yang menyimpan warisan budaya</p>
+              <div class="flex justify-between items-center">
+                <span class="text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </span>
+                <span class="text-sm text-gray-400">4/5</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pantai Indah Mutiara Bengkong -->
+          <div class="bg-gray-900 rounded-xl overflow-hidden destination-card">
+            <div class="h-48 overflow-hidden">
+              <img src="https://raw.githubusercontent.com/username-anda/mr-buddy-website/main/images/destinations/pantai-indah-mutiara.jpg" 
+                   alt="Pantai Indah Mutiara Bengkong" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <h4 class="font-bold text-xl mb-2 text-blue-400">Pantai Indah Mutiara</h4>
+              <p class="text-gray-400 mb-4">Pantai di Bengkong dengan pemandangan laut tenang dan fasilitas keluarga</p>
+              <div class="flex justify-between items-center">
+                <span class="text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </span>
+                <span class="text-sm text-gray-400">4.5/5</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pulau Mubud -->
+          <div class="bg-gray-900 rounded-xl overflow-hidden destination-card">
+            <div class="h-48 overflow-hidden">
+              <img src="https://raw.githubusercontent.com/username-anda/mr-buddy-website/main/images/destinations/pulau-mubud.jpg" 
+                   alt="Pulau Mubud" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <h4 class="font-bold text-xl mb-2 text-blue-400">Pulau Mubud</h4>
+              <p class="text-gray-400 mb-4">Pulau eksotis dengan pantai pasir putih dan air laut jernih untuk snorkeling</p>
+              <div class="flex justify-between items-center">
+                <span class="text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </span>
+                <span class="text-sm text-gray-400">5/5</span>
+              </div>
+            </div>
+          </div>
+        </div>
         
-        // ===== INITIALIZATION =====
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize UI
-            initializeUI();
-            
-            // Load saved data
-            loadAllData();
-            
-            // Request notification permission
-            requestNotificationPermission();
-            
-            // Set current date/time
-            setCurrentDateTime();
-            
-            // Setup service worker for PWA
-            setupServiceWorker();
-            
-            // Check for PWA install prompt
-            setupInstallPrompt();
-            
-            // Start alarm checker
-            startAlarmChecker();
-            
-            // Hide loading screen
-            setTimeout(() => {
-                document.getElementById('loading').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loading').style.display = 'none';
-                }, 500);
-            }, 1000);
-        });
+        <div class="text-center mt-12">
+          <a href="https://wa.me/6282288591214?text=Halo%20MR.BUDDY,%20saya%20ingin%20konsultasi%20tentang%20destinasi%20wisata%20di%20Kepri" 
+             target="_blank"
+             class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
+            <i class="fas fa-map-marked-alt mr-2"></i>KONSULTASI DESTINASI WISATA
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section id="contact" class="py-20 bg-gray-800">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-blue-400 mb-6">HUBUNGI KAMI</h2>
+      <p class="text-gray-300 text-lg mb-8">Ready melayani perjalanan Anda 24/7</p>
+      
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-gray-900 p-6 rounded-xl">
+          <div class="text-3xl text-green-400 mb-4">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
+          <p class="text-gray-400 mb-4">Fast Response</p>
+          <a href="https://wa.me/6282288591214" target="_blank" 
+             class="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold">
+            CHAT SEKARANG
+          </a>
+        </div>
         
-        // ===== UI INITIALIZATION =====
-        function initializeUI() {
-            // Tab switching for desktop
-            document.querySelectorAll('.tab-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                    
-                    button.classList.add('active');
-                    const tabId = button.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
-                });
-            });
-            
-            // Tab switching for mobile
-            document.querySelectorAll('.mobile-nav-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    document.querySelectorAll('.mobile-nav-btn').forEach(btn => btn.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                    
-                    button.classList.add('active');
-                    const tabId = button.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
-                    window.scrollTo(0, 0);
-                });
-            });
-            
-            // Money Management buttons
-            document.getElementById('save-income').addEventListener('click', saveIncome);
-            document.getElementById('save-expense').addEventListener('click', saveExpense);
-            document.getElementById('save-saving').addEventListener('click', saveSaving);
-            
-            // Time Management buttons
-            document.getElementById('save-work').addEventListener('click', saveWorkSchedule);
-            document.getElementById('save-play').addEventListener('click', savePlaySchedule);
-            document.getElementById('save-study').addEventListener('click', saveStudySchedule);
-            
-            // Alarm modal
-            document.getElementById('openAlarmModal').addEventListener('click', () => {
-                document.getElementById('alarmModal').style.display = 'flex';
-                document.getElementById('alarmTime').value = getCurrentDateTimeLocal();
-            });
-            
-            document.getElementById('closeAlarmModal').addEventListener('click', () => {
-                document.getElementById('alarmModal').style.display = 'none';
-            });
-            
-            document.getElementById('saveAlarm').addEventListener('click', saveAlarm);
-            
-            // Integration buttons
-            document.querySelectorAll('.connect-google-calendar').forEach(btn => {
-                btn.addEventListener('click', connectGoogleCalendar);
-            });
-            
-            document.querySelectorAll('.open-alarm-modal').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.getElementById('alarmModal').style.display = 'flex';
-                });
-            });
-            
-            document.querySelectorAll('.set-google-reminder').forEach(btn => {
-                btn.addEventListener('click', setGoogleReminder);
-            });
-            
-            document.querySelectorAll('.export-to-notes').forEach(btn => {
-                btn.addEventListener('click', exportToAppleNotes);
-            });
-            
-            // Data & Export buttons
-            document.getElementById('export-all').addEventListener('click', exportAllData);
-            document.getElementById('export-income').addEventListener('click', () => exportData('income'));
-            document.getElementById('export-expense').addEventListener('click', () => exportData('expense'));
-            document.getElementById('export-saving').addEventListener('click', () => exportData('saving'));
-            document.getElementById('backup-data').addEventListener('click', backupData);
-            document.getElementById('restore-data').addEventListener('click', restoreData);
-            document.getElementById('clear-data').addEventListener('click', clearAllData);
-            
-            // Install button
-            document.getElementById('installBtn').addEventListener('click', showInstallPrompt);
-            document.getElementById('installConfirm').addEventListener('click', installPWA);
-            document.getElementById('installCancel').addEventListener('click', () => {
-                document.getElementById('installPrompt').classList.remove('show');
-            });
-            
-            // Notification permission
-            document.querySelector('.request-notification')?.addEventListener('click', requestNotificationPermission);
-        }
-        
-        // ===== DATA MANAGEMENT =====
-        function loadAllData() {
-            loadFinanceData();
-            loadScheduleData();
-            loadAlarms();
-            updateStatistics();
-        }
-        
-        function loadFinanceData() {
-            // Load incomes
-            const incomes = JSON.parse(localStorage.getItem('incomes') || '[]');
-            const expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
-            const savings = JSON.parse(localStorage.getItem('savings') || '[]');
-            
-            // Update summary
-            updateFinanceSummary(incomes, expenses, savings);
-            
-            // Update lists
-            updateIncomeList(incomes);
-            updateExpenseList(expenses);
-            updateSavingList(savings);
-        }
-        
-        function loadScheduleData() {
-            const workSchedule = JSON.parse(localStorage.getItem('workSchedule') || '{}');
-            const playSchedule = JSON.parse(localStorage.getItem('playSchedule') || '{}');
-            const studySchedule = JSON.parse(localStorage.getItem('studySchedule') || '{}');
-            
-            // Populate forms
-            if (workSchedule.days) {
-                const select = document.getElementById('work-days');
-                Array.from(select.options).forEach(option => {
-                    option.selected = workSchedule.days.includes(option.value);
-                });
-            }
-            if (workSchedule.start) document.getElementById('work-start').value = workSchedule.start;
-            if (workSchedule.end) document.getElementById('work-end').value = workSchedule.end;
-            
-            if (playSchedule.day) document.getElementById('play-day').value = playSchedule.day;
-            if (playSchedule.start) document.getElementById('play-start').value = playSchedule.start;
-            if (playSchedule.end) document.getElementById('play-end').value = playSchedule.end;
-            
-            if (studySchedule.days) {
-                const select = document.getElementById('study-days');
-                Array.from(select.options).forEach(option => {
-                    option.selected = studySchedule.days.includes(option.value);
-                });
-            }
-            if (studySchedule.start) document.getElementById('study-start').value = studySchedule.start;
-            if (studySchedule.end) document.getElementById('study-end').value = studySchedule.end;
-            if (studySchedule.taskHours) document.getElementById('task-hours').value = studySchedule.taskHours;
-            
-            // Update today's schedule
-            updateTodaySchedule(workSchedule, playSchedule, studySchedule);
-        }
-        
-        function loadAlarms() {
-            const alarms = JSON.parse(localStorage.getItem('alarms') || '[]');
-            updateAlarmList(alarms);
-        }
-        
-        // ===== SAVE FUNCTIONS =====
-        function saveIncome() {
-            const income = {
-                source: document.getElementById('income-source').value,
-                date: document.getElementById('income-date').value,
-                method: document.getElementById('income-method').value,
-                bank: document.getElementById('income-bank').value,
-                amount: parseFloat(document.getElementById('income-amount').value) || 0,
-                notes: document.getElementById('income-notes').value,
-                timestamp: new Date().toISOString()
-            };
-            
-            if (!income.source || !income.amount) {
-                alert('Mohon isi sumber dan jumlah pemasukan');
-                return;
-            }
-            
-            const incomes = JSON.parse(localStorage.getItem('incomes') || '[]');
-            incomes.push(income);
-            localStorage.setItem('incomes', JSON.stringify(incomes));
-            
-            alert('Pemasukan berhasil disimpan!');
-            clearForm('income');
-            loadFinanceData();
-        }
-        
-        function saveExpense() {
-            const expense = {
-                for: document.getElementById('expense-for').value,
-                date: document.getElementById('expense-date').value,
-                method: document.getElementById('expense-method').value,
-                bank: document.getElementById('expense-bank').value,
-                amount: parseFloat(document.getElementById('expense-amount').value) || 0,
-                notes: document.getElementById('expense-notes').value,
-                timestamp: new Date().toISOString()
-            };
-            
-            if (!expense.for || !expense.amount) {
-                alert('Mohon isi tujuan dan jumlah pengeluaran');
-                return;
-            }
-            
-            const expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
-            expenses.push(expense);
-            localStorage.setItem('expenses', JSON.stringify(expenses));
-            
-            alert('Pengeluaran berhasil disimpan!');
-            clearForm('expense');
-            loadFinanceData();
-        }
-        
-        function saveSaving() {
-            const saving = {
-                type: document.getElementById('saving-type').value,
-                place: document.getElementById('saving-place').value,
-                method: document.getElementById('saving-method').value,
-                amount: parseFloat(document.getElementById('saving-amount').value) || 0,
-                notes: document.getElementById('saving-notes').value,
-                timestamp: new Date().toISOString()
-            };
-            
-            if (!saving.place || !saving.amount) {
-                alert('Mohon isi tempat dan jumlah tabungan/investasi');
-                return;
-            }
-            
-            const savings = JSON.parse(localStorage.getItem('savings') || '[]');
-            savings.push(saving);
-            localStorage.setItem('savings', JSON.stringify(savings));
-            
-            alert('Data tabungan/investasi berhasil disimpan!');
-            clearForm('saving');
-            loadFinanceData();
-        }
-        
-        function saveWorkSchedule() {
-            const workSchedule = {
-                days: Array.from(document.getElementById('work-days').selectedOptions).map(opt => opt.value),
-                start: document.getElementById('work-start').value,
-                end: document.getElementById('work-end').value
-            };
-            
-            localStorage.setItem('workSchedule', JSON.stringify(workSchedule));
-            alert('Jadwal kerja berhasil disimpan!');
-            loadScheduleData();
-        }
-        
-        function savePlaySchedule() {
-            const playSchedule = {
-                day: document.getElementById('play-day').value,
-                start: document.getElementById('play-start').value,
-                end: document.getElementById('play-end').value
-            };
-            
-            localStorage.setItem('playSchedule', JSON.stringify(playSchedule));
-            alert('Jadwal main berhasil disimpan!');
-            loadScheduleData();
-        }
-        
-        function saveStudySchedule() {
-            const studySchedule = {
-                days: Array.from(document.getElementById('study-days').selectedOptions).map(opt => opt.value),
-                start: document.getElementById('study-start').value,
-                end: document.getElementById('study-end').value,
-                taskHours: document.getElementById('task-hours').value
-            };
-            
-            localStorage.setItem('studySchedule', JSON.stringify(studySchedule));
-            alert('Jadwal kuliah & tugas berhasil disimpan!');
-            loadScheduleData();
-        }
-        
-        function saveAlarm() {
-            const alarm = {
-                name: document.getElementById('alarmName').value,
-                time: document.getElementById('alarmTime').value,
-                repeat: document.getElementById('alarmRepeat').value,
-                sound: document.getElementById('alarmSound').value,
-                active: true,
-                id: Date.now()
-            };
-            
-            if (!alarm.name || !alarm.time) {
-                alert('Mohon isi nama dan waktu alarm');
-                return;
-            }
-            
-            const alarms = JSON.parse(localStorage.getItem('alarms') || '[]');
-            alarms.push(alarm);
-            localStorage.setItem('alarms', JSON.stringify(alarms));
-            
-            alert('Alarm berhasil disimpan!');
-            document.getElementById('alarmModal').style.display = 'none';
-            clearForm('alarm');
-            loadAlarms();
-        }
-        
-        // ===== UPDATE FUNCTIONS =====
-        function updateFinanceSummary(incomes, expenses, savings) {
-            let totalIncome = 0;
-            let totalExpense = 0;
-            let totalSaving = 0;
-            let totalInvestment = 0;
-            
-            const now = new Date();
-            const thisMonth = now.getMonth();
-            const thisYear = now.getFullYear();
-            const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-            
-            let monthlyIncome = 0;
-            let monthlyExpense = 0;
-            let weeklyIncome = 0;
-            let weeklyExpense = 0;
-            
-            incomes.forEach(income => {
-                totalIncome += income.amount;
-                const incomeDate = new Date(income.date || income.timestamp);
-                
-                if (incomeDate.getMonth() === thisMonth && incomeDate.getFullYear() === thisYear) {
-                    monthlyIncome += income.amount;
-                }
-                
-                if (incomeDate >= oneWeekAgo) {
-                    weeklyIncome += income.amount;
-                }
-            });
-            
-            expenses.forEach(expense => {
-                totalExpense += expense.amount;
-                const expenseDate = new Date(expense.date || expense.timestamp);
-                
-                if (expenseDate.getMonth() === thisMonth && expenseDate.getFullYear() === thisYear) {
-                    monthlyExpense += expense.amount;
-                }
-                
-                if (expenseDate >= oneWeekAgo) {
-                    weeklyExpense += expense.amount;
-                }
-            });
-            
-            savings.forEach(saving => {
-                if (saving.type === 'tabungan') {
-                    totalSaving += saving.amount;
-                } else {
-                    totalInvestment += saving.amount;
-                }
-            });
-            
-            document.getElementById('total-income').textContent = formatCurrency(totalIncome);
-            document.getElementById('total-expense').textContent = formatCurrency(totalExpense);
-            document.getElementById('total-balance').textContent = formatCurrency(totalIncome - totalExpense);
-            document.getElementById('total-saving').textContent = formatCurrency(totalSaving);
-            document.getElementById('total-investment').textContent = formatCurrency(totalInvestment);
-            document.getElementById('monthly-income').textContent = formatCurrency(monthlyIncome);
-            document.getElementById('monthly-expense').textContent = formatCurrency(monthlyExpense);
-            document.getElementById('weekly-income').textContent = formatCurrency(weeklyIncome);
-            document.getElementById('weekly-expense').textContent = formatCurrency(weeklyExpense);
-        }
-        
-        function updateIncomeList(incomes) {
-            const container = document.getElementById('income-list');
-            container.innerHTML = '';
-            
-            if (incomes.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: var(--gray);">Belum ada data pemasukan</p>';
-                return;
-            }
-            
-            // Show last 5 incomes
-            incomes.slice(-5).reverse().forEach(income => {
-                const item = document.createElement('div');
-                item.className = 'data-item';
-                item.innerHTML = `
-                    <div class="data-info">
-                        <h4>${income.source}</h4>
-                        <p>${formatDate(income.date || income.timestamp)} • ${formatCurrency(income.amount)}</p>
-                        ${income.notes ? `<p><small>${income.notes}</small></p>` : ''}
-                    </div>
-                    <div class="data-actions">
-                        <button class="btn-small" onclick="editIncome(${income.id || 'null'})">Edit</button>
-                        <button class="btn-small btn-danger" onclick="deleteIncome(${income.id || 'null'})">Hapus</button>
-                    </div>
-                `;
-                container.appendChild(item);
-            });
-            
-            document.getElementById('income-count').textContent = incomes.length;
-        }
-        
-        function updateExpenseList(expenses) {
-            const container = document.getElementById('expense-list');
-            container.innerHTML = '';
-            
-            if (expenses.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: var(--gray);">Belum ada data pengeluaran</p>';
-                return;
-            }
-            
-            // Show last 5 expenses
-            expenses.slice(-5).reverse().forEach(expense => {
-                const item = document.createElement('div');
-                item.className = 'data-item';
-                item.innerHTML = `
-                    <div class="data-info">
-                        <h4>${expense.for}</h4>
-                        <p>${formatDate(expense.date || expense.timestamp)} • ${formatCurrency(expense.amount)}</p>
-                        ${expense.notes ? `<p><small>${expense.notes}</small></p>` : ''}
-                    </div>
-                    <div class="data-actions">
-                        <button class="btn-small" onclick="editExpense(${expense.id || 'null'})">Edit</button>
-                        <button class="btn-small btn-danger" onclick="deleteExpense(${expense.id || 'null'})">Hapus</button>
-                    </div>
-                `;
-                container.appendChild(item);
-            });
-            
-            document.getElementById('expense-count').textContent = expenses.length;
-        }
-        
-        function updateSavingList(savings) {
-            const container = document.getElementById('saving-list');
-            container.innerHTML = '';
-            
-            if (savings.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: var(--gray);">Belum ada data tabungan</p>';
-                return;
-            }
-            
-            // Show last 5 savings
-            savings.slice(-5).reverse().forEach(saving => {
-                const item = document.createElement('div');
-                item.className = 'data-item';
-                item.innerHTML = `
-                    <div class="data-info">
-                        <h4>${saving.type === 'tabungan' ? 'Tabungan' : 'Investasi'}: ${saving.place}</h4>
-                        <p>${formatDate(saving.timestamp)} • ${formatCurrency(saving.amount)}</p>
-                        ${saving.notes ? `<p><small>${saving.notes}</small></p>` : ''}
-                    </div>
-                    <div class="data-actions">
-                        <button class="btn-small" onclick="editSaving(${saving.id || 'null'})">Edit</button>
-                        <button class="btn-small btn-danger" onclick="deleteSaving(${saving.id || 'null'})">Hapus</button>
-                    </div>
-                `;
-                container.appendChild(item);
-            });
-            
-            document.getElementById('saving-count').textContent = savings.length;
-        }
-        
-        function updateTodaySchedule(work, play, study) {
-            const container = document.getElementById('today-schedule');
-            container.innerHTML = '';
-            
-            const today = new Date();
-            const dayName = today.toLocaleDateString('id-ID', { weekday: 'long' }).toLowerCase();
-            const dayMap = {
-                'senin': 'monday', 'selasa': 'tuesday', 'rabu': 'wednesday',
-                'kamis': 'thursday', 'jumat': 'friday', 'sabtu': 'saturday', 'minggu': 'sunday'
-            };
-            const todayEnglish = dayMap[dayName];
-            
-            // Check work schedule
-            if (work.days && work.days.includes(dayName) && work.start && work.end) {
-                const item = document.createElement('div');
-                item.className = 'data-item';
-                const now = new Date();
-                const workStart = new Date();
-                workStart.setHours(parseInt(work.start.split(':')[0]), parseInt(work.start.split(':')[1]));
-                const workEnd = new Date();
-                workEnd.setHours(parseInt(work.end.split(':')[0]), parseInt(work.end.split(':')[1]));
-                
-                let status = 'Akan datang';
-                if (now >= workStart && now <= workEnd) status = 'Sedang berlangsung';
-                if (now > workEnd) status = 'Selesai';
-                
-                item.innerHTML = `
-                    <div class="data-info">
-                        <h4>Kerja</h4>
-                        <p>${work.start} - ${work.end}</p>
-                    </div>
-                    <span class="badge">${status}</span>
-                `;
-                container.appendChild(item);
-            }
-            
-            // Update statistics
-            updateTimeStatistics(work, study);
-        }
-        
-        function updateAlarmList(alarms) {
-            const container = document.getElementById('active-alarms');
-            container.innerHTML = '';
-            
-            if (alarms.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: var(--gray);">Belum ada alarm</p>';
-                return;
-            }
-            
-            // Show active alarms
-            alarms.filter(alarm => alarm.active).forEach(alarm => {
-                const item = document.createElement('div');
-                item.className = 'data-item';
-                item.innerHTML = `
-                    <div class="data-info">
-                        <h4>${alarm.name}</h4>
-                        <p>${formatDateTime(alarm.time)} • ${getRepeatText(alarm.repeat)}</p>
-                    </div>
-                    <div class="data-actions">
-                        <button class="btn-small btn-danger" onclick="toggleAlarm(${alarm.id})">Nonaktifkan</button>
-                    </div>
-                `;
-                container.appendChild(item);
-            });
-            
-            document.getElementById('alarm-count').textContent = alarms.filter(a => a.active).length;
-        }
-        
-        function updateTimeStatistics(work, study) {
-            // Calculate work hours per week
-            let workHours = 0;
-            if (work.days && work.start && work.end) {
-                const start = parseTime(work.start);
-                const end = parseTime(work.end);
-                const hoursPerDay = (end - start) / (1000 * 60 * 60);
-                workHours = work.days.length * hoursPerDay;
-            }
-            
-            // Calculate study hours per week
-            let studyHours = 0;
-            if (study.days && study.start && study.end) {
-                const start = parseTime(study.start);
-                const end = parseTime(study.end);
-                const hoursPerDay = (end - start) / (1000 * 60 * 60);
-                studyHours = study.days.length * hoursPerDay;
-            }
-            
-            const taskHours = parseFloat(document.getElementById('task-hours').value) || 0;
-            const totalHours = workHours + studyHours + taskHours;
-            const freeHours = 7 * 16 - totalHours; // Assuming 16 waking hours per day
-            
-            document.getElementById('work-hours').textContent = `${workHours.toFixed(1)} jam`;
-            document.getElementById('study-hours').textContent = `${studyHours.toFixed(1)} jam`;
-            document.getElementById('task-hours-total').textContent = `${taskHours} jam`;
-            document.getElementById('free-hours').textContent = `${Math.max(0, freeHours).toFixed(1)} jam`;
-        }
-        
-        function updateStatistics() {
-            // Calculate storage size
-            let totalSize = 0;
-            for (let key in localStorage) {
-                if (localStorage.hasOwnProperty(key)) {
-                    totalSize += localStorage[key].length * 2; // Approximate size in bytes
-                }
-            }
-            
-            document.getElementById('storage-size').textContent = `${(totalSize / 1024).toFixed(2)} KB`;
-        }
-        
-        // ===== INTEGRATION FUNCTIONS =====
-        function connectGoogleCalendar() {
-            // Create a Google Calendar event URL
-            const event = {
-                title: 'Jadwal dari Personal Website',
-                details: 'Jadwal yang disimpan dari aplikasi Personal Website',
-                location: '',
-                start: new Date(),
-                end: new Date(Date.now() + 60 * 60 * 1000) // 1 hour later
-            };
-            
-            const startDate = event.start.toISOString().replace(/-|:|\.\d+/g, '');
-            const endDate = event.end.toISOString().replace(/-|:|\.\d+/g, '');
-            
-            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(event.details)}&location=${encodeURIComponent(event.location)}`;
-            
-            window.open(url, '_blank');
-            alert('Anda akan diarahkan ke Google Calendar. Isi detail event dan simpan.');
-        }
-        
-        function setGoogleReminder() {
-            alert('Untuk Google Reminders:\n1. Buka Google Assistant\n2. Katakan "Set reminder"\n3. Ikuti instruksi\n\nAtau gunakan Google Keep untuk pengingat.');
-        }
-        
-        function exportToAppleNotes() {
-            // Create a text file with all data
-            const data = {
-                incomes: JSON.parse(localStorage.getItem('incomes') || '[]'),
-                expenses: JSON.parse(localStorage.getItem('expenses') || '[]'),
-                savings: JSON.parse(localStorage.getItem('savings') || '[]'),
-                timestamp: new Date().toISOString()
-            };
-            
-            const text = `DATA PERSONAL WEBSITE\n\n` +
-                        `PEMASUKAN:\n${data.incomes.map(i => `- ${i.source}: Rp${i.amount} (${formatDate(i.date)})`).join('\n')}\n\n` +
-                        `PENGELUARAN:\n${data.expenses.map(e => `- ${e.for}: Rp${e.amount} (${formatDate(e.date)})`).join('\n')}\n\n` +
-                        `TABUNGAN/INVESTASI:\n${data.savings.map(s => `- ${s.type}: ${s.place}: Rp${s.amount}`).join('\n')}\n\n` +
-                        `Total Saldo: Rp${calculateTotalBalance(data.incomes, data.expenses)}\n` +
-                        `Ekspor pada: ${new Date().toLocaleString('id-ID')}`;
-            
-            downloadFile(text, 'data-personal-website.txt', 'text/plain');
-            alert('Data berhasil diekspor ke file teks. Buka file ini dan share ke Apple Notes.');
-        }
-        
-        // ===== EXPORT FUNCTIONS =====
-        function exportAllData() {
-            const data = {
-                incomes: JSON.parse(localStorage.getItem('incomes') || '[]'),
-                expenses: JSON.parse(localStorage.getItem('expenses') || '[]'),
-                savings: JSON.parse(localStorage.getItem('savings') || '[]'),
-                alarms: JSON.parse(localStorage.getItem('alarms') || '[]'),
-                schedules: {
-                    work: JSON.parse(localStorage.getItem('workSchedule') || '{}'),
-                    play: JSON.parse(localStorage.getItem('playSchedule') || '{}'),
-                    study: JSON.parse(localStorage.getItem('studySchedule') || '{}')
-                },
-                timestamp: new Date().toISOString(),
-                version: '1.0'
-            };
-            
-            downloadFile(JSON.stringify(data, null, 2), 'personal-website-backup.json', 'application/json');
-        }
-        
-        function exportData(type) {
-            let data, filename;
-            
-            switch(type) {
-                case 'income':
-                    data = JSON.parse(localStorage.getItem('incomes') || '[]');
-                    filename = 'pemasukan.csv';
-                    exportToCSV(data, filename, ['date', 'source', 'amount', 'method', 'bank', 'notes']);
-                    break;
-                case 'expense':
-                    data = JSON.parse(localStorage.getItem('expenses') || '[]');
-                    filename = 'pengeluaran.csv';
-                    exportToCSV(data, filename, ['date', 'for', 'amount', 'method', 'bank', 'notes']);
-                    break;
-                case 'saving':
-                    data = JSON.parse(localStorage.getItem('savings') || '[]');
-                    filename = 'tabungan-investasi.csv';
-                    exportToCSV(data, filename, ['timestamp', 'type', 'place', 'amount', 'method', 'notes']);
-                    break;
-            }
-        }
-        
-        function exportToCSV(data, filename, fields) {
-            if (data.length === 0) {
-                alert('Tidak ada data untuk diekspor');
-                return;
-            }
-            
-            let csv = fields.join(',') + '\n';
-            
-            data.forEach(item => {
-                const row = fields.map(field => {
-                    let value = item[field] || '';
-                    // Handle dates
-                    if (field === 'date' || field === 'timestamp') {
-                        value = formatDate(value);
-                    }
-                    // Escape commas and quotes
-                    if (typeof value === 'string' && (value.includes(',') || value.includes('"'))) {
-                        value = `"${value.replace(/"/g, '""')}"`;
-                    }
-                    return value;
-                });
-                csv += row.join(',') + '\n';
-            });
-            
-            downloadFile(csv, filename, 'text/csv');
-        }
-        
-        function backupData() {
-            exportAllData();
-        }
-        
-        function restoreData() {
-            const fileInput = document.getElementById('restore-file');
-            const file = fileInput.files[0];
-            
-            if (!file) {
-                alert('Pilih file backup terlebih dahulu');
-                return;
-            }
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const data = JSON.parse(e.target.result);
-                    
-                    if (confirm('Restore data dari backup? Data saat ini akan diganti.')) {
-                        if (data.incomes) localStorage.setItem('incomes', JSON.stringify(data.incomes));
-                        if (data.expenses) localStorage.setItem('expenses', JSON.stringify(data.expenses));
-                        if (data.savings) localStorage.setItem('savings', JSON.stringify(data.savings));
-                        if (data.alarms) localStorage.setItem('alarms', JSON.stringify(data.alarms));
-                        if (data.schedules) {
-                            if (data.schedules.work) localStorage.setItem('workSchedule', JSON.stringify(data.schedules.work));
-                            if (data.schedules.play) localStorage.setItem('playSchedule', JSON.stringify(data.schedules.play));
-                            if (data.schedules.study) localStorage.setItem('studySchedule', JSON.stringify(data.schedules.study));
-                        }
-                        
-                        alert('Data berhasil di-restore!');
-                        loadAllData();
-                    }
-                } catch (error) {
-                    alert('File backup tidak valid: ' + error.message);
-                }
-            };
-            reader.readAsText(file);
-        }
-        
-        function clearAllData() {
-            if (confirm('HAPUS SEMUA DATA? Tindakan ini tidak dapat dibatalkan!')) {
-                localStorage.clear();
-                alert('Semua data telah dihapus');
-                loadAllData();
-            }
-        }
-        
-        // ===== ALARM FUNCTIONS =====
-        function startAlarmChecker() {
-            setInterval(checkAlarms, 60000); // Check every minute
-        }
-        
-        function checkAlarms() {
-            const alarms = JSON.parse(localStorage.getItem('alarms') || '[]');
-            const now = new Date();
-            
-            alarms.forEach(alarm => {
-                if (!alarm.active) return;
-                
-                const alarmTime = new Date(alarm.time);
-                
-                // Check if alarm should trigger
-                if (alarmTime <= now && now < new Date(alarmTime.getTime() + 60000)) { // Within 1 minute
-                    triggerAlarm(alarm);
-                }
-            });
-        }
-        
-        function triggerAlarm(alarm) {
-            // Show notification
-            if (Notification.permission === 'granted') {
-                new Notification('⏰ ' + alarm.name, {
-                    body: 'Waktunya ' + alarm.name,
-                    icon: '/icon.png'
-                });
-            } else {
-                alert('ALARM: ' + alarm.name);
-            }
-            
-            // Play sound (simulated)
-            console.log('Alarm triggered:', alarm.name);
-            
-            // Handle repeat
-            if (alarm.repeat !== 'once') {
-                // Update alarm time for next occurrence
-                const alarms = JSON.parse(localStorage.getItem('alarms') || '[]');
-                const alarmIndex = alarms.findIndex(a => a.id === alarm.id);
-                
-                if (alarmIndex !== -1) {
-                    const nextTime = getNextAlarmTime(alarm.time, alarm.repeat);
-                    alarms[alarmIndex].time = nextTime.toISOString().slice(0, 16);
-                    localStorage.setItem('alarms', JSON.stringify(alarms));
-                }
-            }
-        }
-        
-        function getNextAlarmTime(time, repeat) {
-            const next = new Date(time);
-            
-            switch(repeat) {
-                case 'daily':
-                    next.setDate(next.getDate() + 1);
-                    break;
-                case 'weekly':
-                    next.setDate(next.getDate() + 7);
-                    break;
-                case 'weekdays':
-                    do {
-                        next.setDate(next.getDate() + 1);
-                    } while (next.getDay() === 0 || next.getDay() === 6); // Skip weekends
-                    break;
-            }
-            
-            return next;
-        }
-        
-        function toggleAlarm(id) {
-            const alarms = JSON.parse(localStorage.getItem('alarms') || '[]');
-            const alarmIndex = alarms.findIndex(a => a.id === id);
-            
-            if (alarmIndex !== -1) {
-                alarms[alarmIndex].active = !alarms[alarmIndex].active;
-                localStorage.setItem('alarms', JSON.stringify(alarms));
-                loadAlarms();
-            }
-        }
-        
-        // ===== PWA FUNCTIONS =====
-        function setupServiceWorker() {
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('sw.js').catch(error => {
-                    console.log('Service Worker registration failed:', error);
-                });
-            }
-        }
-        
-        function setupInstallPrompt() {
-            window.addEventListener('beforeinstallprompt', (e) => {
-                e.preventDefault();
-                deferredPrompt = e;
-                
-                // Show install button after 5 seconds
-                setTimeout(() => {
-                    if (deferredPrompt && !isPWAInstalled()) {
-                        document.getElementById('installBtn').style.display = 'inline-block';
-                    }
-                }, 5000);
-            });
-            
-            window.addEventListener('appinstalled', () => {
-                deferredPrompt = null;
-                document.getElementById('installBtn').style.display = 'none';
-                alert('Aplikasi berhasil diinstall! Sekarang bisa diakses dari homescreen.');
-            });
-        }
-        
-        function showInstallPrompt() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-            } else {
-                document.getElementById('installPrompt').classList.add('show');
-            }
-        }
-        
-        function installPWA() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then(() => {
-                    deferredPrompt = null;
-                });
-            } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                alert('Untuk install di iOS:\n1. Buka di Safari\n2. Tap tombol share (kotak dengan panah)\n3. Scroll ke bawah\n4. Pilih "Add to Home Screen"');
-            } else {
-                alert('Fitur install hanya tersedia di browser tertentu. Coba buka di Chrome/Edge.');
-            }
-            
-            document.getElementById('installPrompt').classList.remove('show');
-        }
-        
-        function isPWAInstalled() {
-            return window.matchMedia('(display-mode: standalone)').matches || 
-                   window.navigator.standalone === true;
-        }
-        
-        // ===== HELPER FUNCTIONS =====
-        function formatCurrency(amount) {
-            return 'Rp ' + amount.toLocaleString('id-ID');
-        }
-        
-        function formatDate(dateString) {
-            if (!dateString) return '-';
-            const date = new Date(dateString);
-            return date.toLocaleDateString('id-ID', {
-                day: '2-digit',
-                month: 'short',
-                year: 'numeric'
-            });
-        }
-        
-        function formatDateTime(dateTimeString) {
-            if (!dateTimeString) return '-';
-            const date = new Date(dateTimeString);
-            return date.toLocaleString('id-ID', {
-                day: '2-digit',
-                month: 'short',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-        }
-        
-        function getRepeatText(repeat) {
-            const texts = {
-                'once': 'Sekali',
-                'daily': 'Setiap hari',
-                'weekly': 'Setiap minggu',
-                'weekdays': 'Hari kerja'
-            };
-            return texts[repeat] || repeat;
-        }
-        
-        function parseTime(timeString) {
-            const [hours, minutes] = timeString.split(':').map(Number);
-            const date = new Date();
-            date.setHours(hours, minutes, 0, 0);
-            return date;
-        }
-        
-        function getCurrentDateTimeLocal() {
-            const now = new Date();
-            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-            return now.toISOString().slice(0, 16);
-        }
-        
-        function setCurrentDateTime() {
-            const now = getCurrentDateTimeLocal();
-            document.querySelectorAll('input[type="datetime-local"]').forEach(input => {
-                if (!input.value) input.value = now;
-            });
-        }
-        
-        function clearForm(type) {
-            switch(type) {
-                case 'income':
-                    document.getElementById('income-source').value = '';
-                    document.getElementById('income-amount').value = '';
-                    document.getElementById('income-notes').value = '';
-                    break;
-                case 'expense':
-                    document.getElementById('expense-for').value = '';
-                    document.getElementById('expense-amount').value = '';
-                    document.getElementById('expense-notes').value = '';
-                    break;
-                case 'saving':
-                    document.getElementById('saving-place').value = '';
-                    document.getElementById('saving-amount').value = '';
-                    document.getElementById('saving-notes').value = '';
-                    break;
-                case 'alarm':
-                    document.getElementById('alarmName').value = '';
-                    document.getElementById('alarmTime').value = getCurrentDateTimeLocal();
-                    break;
-            }
-        }
-        
-        function downloadFile(content, filename, type) {
-            const blob = new Blob([content], { type: type });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            a.click();
-            window.URL.revokeObjectURL(url);
-        }
-        
-        function calculateTotalBalance(incomes, expenses) {
-            const totalIncome = incomes.reduce((sum, i) => sum + (i.amount || 0), 0);
-            const totalExpense = expenses.reduce((sum, e) => sum + (e.amount || 0), 0);
-            return (totalIncome - totalExpense).toLocaleString('id-ID');
-        }
-        
-        function requestNotificationPermission() {
-            if ("Notification" in window && Notification.permission === "default") {
-                Notification.requestPermission().then(permission => {
-                    notificationPermission = permission === "granted";
-                    if (notificationPermission) {
-                        alert('Notifikasi diaktifkan! Anda akan menerima alarm.');
-                    }
-                });
-            }
-            return false;
-        }
-        
-        // Placeholder functions for edit/delete
-        function editIncome(id) {
-            alert('Fitur edit akan datang! Untuk sekarang, hapus dan buat ulang.');
-        }
-        
-        function deleteIncome(id) {
-            if (confirm('Hapus pemasukan ini?')) {
-                const incomes = JSON.parse(localStorage.getItem('incomes') || '[]');
-                const filtered = incomes.filter(i => i.id !== id);
-                localStorage.setItem('incomes', JSON.stringify(filtered));
-                loadFinanceData();
-            }
-        }
-        
-        function editExpense(id) {
-            alert('Fitur edit akan datang! Untuk sekarang, hapus dan buat ulang.');
-        }
-        
-        function deleteExpense(id) {
-            if (confirm('Hapus pengeluaran ini?')) {
-                const expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
-                const filtered = expenses.filter(e => e.id !== id);
-                localStorage.setItem('expenses', JSON.stringify(filtered));
-                loadFinanceData();
-            }
-        }
-        
-        function editSaving(id) {
-            alert('Fitur edit akan datang! Untuk sekarang, hapus dan buat ulang.');
-        }
-        
-        function deleteSaving(id) {
-            if (confirm('Hapus data tabungan/investasi ini?')) {
-                const savings = JSON.parse(localStorage.getItem('savings') || '[]');
-                const filtered = savings.filter(s => s.id !== id);
-                localStorage.setItem('savings', JSON.stringify(filtered));
-                loadFinanceData();
-            }
-        }
-    </script>
-</body>                                                                                                 </html>
+        <div class="bg-gray-900 p-6 rounded-xl">
+          <div class="text-3xl text-blue-400 mb-4">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Lokasi</h3>
+          <p class="text-gray-400">Batam, Indonesia</p>
+          <p class="text-sm text-gray-500 mt-2">Melayani seluruh area batam dan sekitarnya</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 py-12 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <div class="flex justify-center items-center space-x-3 mb-6">
+        <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+          <span class="font-bold text-white text-xl">MB</span>
+        </div>
+        <div class="text-left">
+          <h3 class="text-xl font-bold text-blue-400">MR.BUDDY</h3>
+          <p class="text-sm text-gray-400">Transport Batam</p>
+        </div>
+      </div>
+      
+      <p class="text-gray-400 mb-6">Melayani dengan hati, mengutamakan kenyamanan dan keamanan perjalanan Anda</p>
+      
+      <div class="flex justify-center space-x-6 mb-6">
+        <a href="#home" class="text-gray-400 hover:text-blue-400">Home</a>
+        <a href="#about" class="text-gray-400 hover:text-blue-400">Tentang</a>
+        <a href="#services" class="text-gray-400 hover:text-blue-400">Layanan</a>
+        <a href="#cars" class="text-gray-400 hover:text-blue-400">Armada</a>
+        <a href="#destinations" class="text-gray-400 hover:text-blue-400">Destinasi</a>
+        <a href="#contact" class="text-gray-400 hover:text-blue-400">Kontak</a>
+      </div>
+      
+      <p class="text-gray-500 text-sm">&copy; 2026 MR.BUDDY - Transport Batam. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+# mr.buddy-travel 
+website rental mobil dan tamu kota batam
