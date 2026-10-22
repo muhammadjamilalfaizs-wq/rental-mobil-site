@@ -1,95 +1,127 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TravOne Transport Batam - FAST AND EASY WAY TO RENT A CAR</title>
+  <title>TravOne Tour guide and travel - FAST AND EASY WAY TO RENT A CAR</title>
   <meta name="description" content="TravOne Transport Batam - Sewa Mobil Murah, Tour & Travel, Armada Terbaru, Harga Terjangkau">
-  <!-- PAKAI CDN UNTUK SEMUA -->
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <!-- FONT POPPINS -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     html { scroll-behavior: smooth; }
+
     .hero-bg {
-      background: linear-gradient(rgba(11, 18, 32, 0.85), rgba(11, 18, 32, 0.9)),
-                  url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+      background:
+        linear-gradient(rgba(11, 18, 32, 0.85), rgba(11, 18, 32, 0.9)),
+        url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=2070&q=80');
       background-size: cover;
       background-position: center;
     }
-    .car-card { 
+
+    .car-card,
+    .destination-card,
+    .visited-card {
       transition: all 0.3s ease;
     }
-    .car-card:hover { 
+
+    .car-card:hover,
+    .visited-card:hover {
       transform: translateY(-5px);
+    }
+
+    .car-card:hover {
       box-shadow: 0 15px 30px rgba(245, 158, 11, 0.3);
     }
-    .destination-card {
-      transition: all 0.3s ease;
-    }
+
     .destination-card:hover {
       transform: scale(1.05);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     }
-    .visited-card {
-      transition: all 0.3s ease;
-    }
+
     .visited-card:hover {
-      transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .footer-logo {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      flex-shrink: 0;
     }
   </style>
 </head>
-<body class="bg-[#0b1220] text-[#ffffff] font-[Poppins]">
+
+<body class="bg-[#0b1220] text-white font-[Poppins]">
+
   <!-- HEADER -->
   <header class="fixed top-0 left-0 w-full bg-[#0b1220]/90 backdrop-blur-md shadow-xl z-50 border-b border-[#f59e0b]">
     <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-      <div class="flex items-center space-x-2">
-        <div class="w-10 h-10 bg-[#f59e0b] rounded-lg flex items-center justify-center shadow-lg">
-          <span class="font-bold text-[#0b1220]">TO</span>
-        </div>
+
+      <!-- LOGO TRAVONE -->
+      <a href="#home" class="flex items-center space-x-3">
+        <img
+          src="data:image/webp;base64,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"
+          alt="Logo TravOne Tour n Travel"
+          class="brand-logo"
+        >
         <div>
-          <h1 class="text-xl font-bold text-[#f59e0b]">TravOne</h1>
-          <p class="text-xs text-gray-300">Transport Batam</p>
+          <h1 class="text-xl font-bold text-[#f59e0b]">Tour guide</h1>
+          <p class="text-xs text-gray-300"> and Travel</p>
         </div>
-      </div>
-      
+      </a>
+
       <nav class="hidden md:flex space-x-8">
         <a href="#home" class="hover:text-[#f59e0b] font-medium transition-colors">Home</a>
-        <a href="#about" class="hover:text-[#f59e0b] font-medium transition-colors">Tentang</a>
-        <a href="#services" class="hover:text-[#f59e0b] font-medium transition-colors">Layanan</a>
-        <a href="#cars" class="hover:text-[#f59e0b] font-medium transition-colors">Armada</a>
-        <a href="#destinations" class="hover:text-[#f59e0b] font-medium transition-colors">Destinasi</a>
-        <a href="#contact" class="hover:text-[#f59e0b] font-medium transition-colors">Kontak</a>
+        <a href="#about" class="hover:text-[#f59e0b] font-medium transition-colors">about</a>
+        <a href="#services" class="hover:text-[#f59e0b] font-medium transition-colors">services</a>
+        <a href="#cars" class="hover:text-[#f59e0b] font-medium transition-colors">fleet</a>
+        <a href="#destinations" class="hover:text-[#f59e0b] font-medium transition-colors">destinations</a>
+        <a href="#contact" class="hover:text-[#f59e0b] font-medium transition-colors">contact</a>
       </nav>
 
-      <a href="https://wa.me/6285767816101" target="_blank" 
-         class="bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 shadow-lg transition-all">
+      <a
+        href="https://wa.me/62895411990998?text=Halo%20TravOne,%20saya%20ingin%20booking%20rental%20mobil"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] px-4 md:px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 shadow-lg transition-all"
+      >
         <i class="fab fa-whatsapp"></i>
-        <span>Booking Now</span>
-      </a>
+        <span>Booking Now!</span>
+      </a> 
     </div>
   </header>
 
-  <!-- ✅ 1️⃣ HERO SECTION -->
+  <!-- HERO SECTION -->
   <section id="home" class="hero-bg min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
     <div class="max-w-4xl">
-      <!-- JUDUL UTAMA -->
       <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-        FAST AND EASY WAY TO <span class="text-[#f59e0b]">RENT A CAR</span>
+        FAST AND EASY WAY TO
+        <span class="text-[#f59e0b]">RENT A CAR</span>
       </h1>
-      
-      <!-- SUBJUDUL -->
+
       <p class="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
-        Melayani Sewa Mobil, Tour & Travel dengan Armada Terbaru, Driver Profesional, dan Harga Terjangkau
+        Providing Car Rental, Tours & Travel with the Latest Fleet, Professional Drivers, and Affordable Prices
       </p>
-      
-      <!-- TOMBOL UTAMA -->
-      <a href="https://wa.me/6285767816101?text=Halo%20TravOne,%20saya%20ingin%20booking%20rental%20mobil" 
-         target="_blank"
-         class="inline-block bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-xl px-12 py-6 rounded-xl shadow-lg transition-all hover:scale-105">
-        <i class="fab fa-whatsapp mr-3"></i>BOOKING VIA WHATSAPP
+
+      <a
+        href="https://wa.me/62895411990998?text=Halo%20TravOne,%20saya%20ingin%20booking%20rental%20mobil"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-xl px-8 md:px-12 py-6 rounded-xl shadow-lg transition-all hover:scale-105"
+      >
+        <i class="fab fa-whatsapp mr-3"></i>
+        BOOKING VIA WHATSAPP
       </a>
     </div>
   </section>
@@ -97,27 +129,49 @@
   <!-- TENTANG KAMI -->
   <section id="about" class="py-24 bg-[#111827]">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">TENTANG KAMI</h2>
-      <p class="text-gray-300 text-center mb-16 max-w-3xl mx-auto text-lg">TravOne Transport Batam merupakan penyedia jasa rental mobil di Batam dan sekitarnya yang siap melayani berbagai kebutuhan perjalanan Anda dengan armada terawat dan pelayanan yang profesional.</p>
-      
+      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">
+        ABOUT US
+      </h2>
+
+      <p class="text-gray-300 text-center mb-16 max-w-3xl mx-auto text-lg">
+        TravOne tour and travel focuses on pick-up and drop-off services
+        as well as tour guides both within the city and out of town.
+        We have been serving guests for more than 3 years and have also
+        collaborated with many destinations both in and out of the city.
+      </p>
+
       <div class="grid md:grid-cols-3 gap-10">
+
         <div class="bg-[#0b1220] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
-          <div class="text-[#f59e0b] text-5xl mb-6"><i class="fas fa-car"></i></div>
-          <h3 class="text-2xl font-bold mb-4 text-white">Armada Terbaru</h3>
-          <p class="text-gray-400">Selalu menggunakan mobil dengan kondisi prima dan terawat untuk kenyamanan Anda</p>
+          <div class="text-[#f59e0b] text-5xl mb-6">
+            <i class="fas fa-car"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Well-Maintained Fleet</h3>
+          <p class="text-gray-400">
+            Always use a car that is in top condition and well-maintained for your comfort.
+          </p>
         </div>
-        
+
         <div class="bg-[#0b1220] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
-          <div class="text-[#f59e0b] text-5xl mb-6"><i class="fas fa-user-tie"></i></div>
-          <h3 class="text-2xl font-bold mb-4 text-white">Driver Profesional</h3>
-          <p class="text-gray-400">Driver berpengalaman, ramah, dan menguasai seluruh rute di Batam dan Kepri</p>
+          <div class="text-[#f59e0b] text-5xl mb-6">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Professional Driver</h3>
+          <p class="text-gray-400">
+            Experienced, friendly driver who is familiar with all routes in Batam and Kepri.
+          </p>
         </div>
-        
+
         <div class="bg-[#0b1220] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
-          <div class="text-[#f59e0b] text-5xl mb-6"><i class="fas fa-handshake"></i></div>
-          <h3 class="text-2xl font-bold mb-4 text-white">Harga Terjangkau</h3>
-          <p class="text-gray-400">Harga transparan tanpa biaya tersembunyi, dengan paket yang bisa disesuaikan</p>
+          <div class="text-[#f59e0b] text-5xl mb-6">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Affordable Prices</h3>
+          <p class="text-gray-400">
+            Transparent pricing with no hidden fees, customizable packages to suit your needs.
+          </p>
         </div>
+
       </div>
     </div>
   </section>
@@ -125,27 +179,39 @@
   <!-- LAYANAN -->
   <section id="services" class="py-24 bg-[#0b1220]">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">LAYANAN KAMI</h2>
-      <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto text-lg">Kami menyediakan berbagai layanan transportasi untuk kebutuhan perjalanan Anda</p>
-      
+      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">
+        OUR SERVICES
+      </h2>
+      <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto text-lg">
+        We provide various transportation services for your travel needs.
+      </p>
+
       <div class="grid md:grid-cols-3 gap-10">
+
         <div class="bg-[#111827] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
           <div class="text-[#f59e0b] text-5xl mb-6">🚗</div>
-          <h3 class="text-2xl font-bold mb-4 text-white">Rental Harian/Mingguan</h3>
-          <p class="text-gray-400">Sewa mobil dengan driver profesional atau lepas kunci untuk kebutuhan pribadi dan bisnis</p>
+          <h3 class="text-2xl font-bold mb-4 text-white">Daily/Weekly Rental</h3>
+          <p class="text-gray-400">
+            Car rental with professional driver or keyless option for personal and business use.
+          </p>
         </div>
-        
+
         <div class="bg-[#111827] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
           <div class="text-[#f59e0b] text-5xl mb-6">🏞️</div>
-          <h3 class="text-2xl font-bold mb-4 text-white">Tour & Wisata</h3>
-          <p class="text-gray-400">Paket wisata dalam dan luar kota dengan itinerary yang menarik dan harga bersaing</p>
+          <h3 class="text-2xl font-bold mb-4 text-white">Tour & Travel</h3>
+          <p class="text-gray-400">
+            Customizable tour packages for both local and out-of-town destinations with attractive itineraries and competitive prices.
+          </p>
         </div>
-        
+
         <div class="bg-[#111827] p-10 rounded-2xl text-center hover:bg-gray-900 transition-all shadow-lg hover:-translate-y-1 border border-gray-800">
           <div class="text-[#f59e0b] text-5xl mb-6">🏢</div>
-          <h3 class="text-2xl font-bold mb-4 text-white">Layanan Perusahaan</h3>
-          <p class="text-gray-400">Kerjasama jangka panjang untuk perusahaan, instansi pemerintah, dan event organizer</p>
+          <h3 class="text-2xl font-bold mb-4 text-white">Corporate Services</h3>
+          <p class="text-gray-400">
+            Long-term partnerships for companies, government agencies, and event organizers.
+          </p>
         </div>
+
       </div>
     </div>
   </section>
@@ -153,69 +219,84 @@
   <!-- ARMADA MOBIL -->
   <section id="cars" class="py-24 bg-[#111827]">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">ARMADA KAMI</h2>
-      <p class="text-gray-400 text-center mb-16 text-lg">Pilih mobil sesuai kebutuhan perjalanan Anda</p>
-      
+      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">
+        OUR CARS
+      </h2>
+      <p class="text-gray-400 text-center mb-16 text-lg">
+        Choose the car that suits your travel needs.
+      </p>
+
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <!-- Avanza 2024 -->
+
+        <!-- AVANZA 2024 -->
         <div class="bg-[#0b1220] rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 hover:shadow-[#f59e0b]/30 transition-all duration-300 border border-gray-800">
           <div class="h-52 bg-gray-700 overflow-hidden">
             <img src="avanza-2024.jpg" alt="Toyota Avanza 2024" class="w-full h-full object-cover">
           </div>
+
           <div class="p-7">
             <h3 class="text-2xl font-bold text-[#f59e0b] mb-3">Toyota Avanza 2024</h3>
             <p class="text-gray-400 mb-5">Matic • 7 Seat • AC Double Blower • Full Multimedia</p>
+
             <div class="mb-6">
               <span class="text-2xl font-bold text-green-400">Rp 350.000 - 600.000</span>
-              <span class="text-gray-400 text-sm ml-2">/ hari</span>
+              <span class="text-gray-400 text-sm ml-2">/ day</span>
             </div>
-            <a href="https://wa.me/6285767816101?text=Halo%20TravOne,%20saya%20mau%20sewa%20Toyota%20Avanza%202024" 
-               target="_blank"
+
+            <a href="https://wa.me/62895411990998?text=Halo%20TravOne,%20saya%20mau%20sewa%20Toyota%20Avanza%202024"
+               target="_blank" rel="noopener noreferrer"
                class="block w-full bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-lg py-4 rounded-xl shadow-lg transition-all text-center">
-              <i class="fab fa-whatsapp mr-2"></i>BOOKING SEKARANG
+              <i class="fab fa-whatsapp mr-2"></i>BOOKING NOW!
             </a>
           </div>
         </div>
 
-        <!-- Avanza 2025 -->
+        <!-- AVANZA 2025 -->
         <div class="bg-[#0b1220] rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 hover:shadow-[#f59e0b]/30 transition-all duration-300 border border-gray-800">
           <div class="h-52 bg-gray-700 overflow-hidden">
             <img src="avanza-2025.jpg" alt="Toyota Avanza 2025" class="w-full h-full object-cover">
           </div>
+
           <div class="p-7">
             <h3 class="text-2xl font-bold text-[#f59e0b] mb-3">Toyota Avanza 2025</h3>
             <p class="text-gray-400 mb-5">Matic Terbaru • 7 Seat • Premium Sound System</p>
+
             <div class="mb-6">
               <span class="text-2xl font-bold text-green-400">Rp 350.000 - 600.000</span>
-              <span class="text-gray-400 text-sm ml-2">/ hari</span>
+              <span class="text-gray-400 text-sm ml-2">/ day</span>
             </div>
-            <a href="https://wa.me/6285767816101?text=Halo%20TravOne,%20saya%20mau%20sewa%20Toyota%20Avanza%202025" 
-               target="_blank"
+
+            <a href="https://wa.me/62895411990998?text=Halo%20TravOne,%20saya%20mau%20sewa%20Toyota%20Avanza%202025"
+               target="_blank" rel="noopener noreferrer"
                class="block w-full bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-lg py-4 rounded-xl shadow-lg transition-all text-center">
-              <i class="fab fa-whatsapp mr-2"></i>BOOKING SEKARANG
+              <i class="fab fa-whatsapp mr-2"></i>BOOKING NOW!
             </a>
           </div>
         </div>
 
-        <!-- Hiace 2018 -->
+        <!-- HIACE 2018 -->
         <div class="bg-[#0b1220] rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 hover:shadow-[#f59e0b]/30 transition-all duration-300 border border-gray-800">
           <div class="h-52 bg-gray-700 overflow-hidden">
             <img src="hiace-2018.jpg" alt="Toyota Hiace 2018" class="w-full h-full object-cover">
           </div>
+
           <div class="p-7">
             <h3 class="text-2xl font-bold text-[#f59e0b] mb-3">Toyota Hiace 2018</h3>
             <p class="text-gray-400 mb-5">Manual • 15 Seat • Kabin Luas • Nyaman untuk Grup</p>
+
             <div class="mb-6">
               <span class="text-2xl font-bold text-green-400">Rp 600.000 - 1.200.000</span>
-              <span class="text-gray-400 text-sm ml-2">/ hari</span>
+              <span class="text-gray-400 text-sm ml-2">/ day</span>
             </div>
-            <a href="https://wa.me/6285767816101?text=Halo%20TravOne,%20saya%20mau%20sewa%20Toyota%20Hiace%202018" 
-               target="_blank"
+
+            <a href="https://wa.me/6285767816101?text=Halo%20TravOne,%20saya%20mau%20sewa%20Toyota%20Hiace%202018"
+               target="_blank" rel="noopener noreferrer"
                class="block w-full bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-lg py-4 rounded-xl shadow-lg transition-all text-center">
-              <i class="fab fa-whatsapp mr-2"></i>BOOKING SEKARANG
+              <i class="fab fa-whatsapp mr-2"></i>BOOKING NOW!
             </a>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -223,71 +304,80 @@
   <!-- DESTINASI WISATA -->
   <section id="destinations" class="py-24 bg-[#0b1220]">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">DESTINASI WISATA</h2>
-      <p class="text-gray-400 text-center mb-16 text-lg">Tempat-tempat yang sudah dikunjungi customer kami dan rekomendasi destinasi di Kepri</p>
-      
-      <!-- A. Tempat yang sudah dikunjungi customer kami -->
+
+      <h2 class="text-4xl font-bold text-center text-[#f59e0b] mb-4">
+        TOURIST DESTINATIONS
+      </h2>
+      <p class="text-gray-400 text-center mb-16 text-lg">
+        Places we have visited and recommended destinations in Kepri.
+      </p>
+
+      <!-- TEMPAT YANG SUDAH DIKUNJUNGI -->
       <div class="mb-20">
-        <h3 class="text-2xl font-bold text-center text-white mb-10">Tempat yang Sudah Dikunjungi Customer Kami</h3>
+        <h3 class="text-2xl font-bold text-center text-white mb-10">
+          Places We Have Visited
+        </h3>
+
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- 1. Jembatan Barelang -->
+
           <div class="bg-[#111827] rounded-2xl overflow-hidden visited-card shadow-lg border border-gray-800">
             <div class="h-48 overflow-hidden">
               <img src="jembatan-barelang.jpg" alt="Jembatan Barelang" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
             <div class="p-6">
               <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">JEMBATAN BARELANG</h4>
-              <p class="text-gray-400">Ikon Batam yang menghubungkan beberapa pulau dengan pemandangan laut yang menakjubkan</p>
+              <p class="text-gray-400">Ikon Batam yang menghubungkan beberapa pulau dengan pemandangan laut yang menakjubkan.</p>
             </div>
           </div>
-          
-          <!-- 2. Pantai Vio Vio -->
+
           <div class="bg-[#111827] rounded-2xl overflow-hidden visited-card shadow-lg border border-gray-800">
             <div class="h-48 overflow-hidden">
               <img src="pantai-vio-vio.jpg" alt="Pantai Vio Vio" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
             <div class="p-6">
               <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">PANTAI VIO VIO</h4>
-              <p class="text-gray-400">Pantai dengan pemandangan sunset yang eksotis dan spot foto yang instagramable</p>
+              <p class="text-gray-400">Pantai dengan pemandangan sunset yang eksotis dan spot foto yang instagramable.</p>
             </div>
           </div>
-          
-          <!-- 3. Pantai Glory Melur -->
+
           <div class="bg-[#111827] rounded-2xl overflow-hidden visited-card shadow-lg border border-gray-800">
             <div class="h-48 overflow-hidden">
               <img src="pantai-glory-melur.jpg" alt="Pantai Glory Melur" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
             <div class="p-6">
               <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">PANTAI GLORY MELUR</h4>
-              <p class="text-gray-400">Pantai pasir putih dengan suasana santai, dilengkapi area bar dan hiburan musik , cocok untuk bersantai dan menikmati suasana pantai.</p>
+              <p class="text-gray-400">Pantai pasir putih dengan suasana santai, dilengkapi area bar dan hiburan musik, cocok untuk bersantai dan menikmati suasana pantai.</p>
             </div>
           </div>
-          
-          <!-- 4. Sleeping Temple Buddha -->
+
           <div class="bg-[#111827] rounded-2xl overflow-hidden visited-card shadow-lg border border-gray-800">
             <div class="h-48 overflow-hidden">
               <img src="sleeping-tample-budha.jpg" alt="Sleeping Temple Buddha" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
             <div class="p-6">
               <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">SLEEPING TEMPLE BUDDHA</h4>
-              <p class="text-gray-400">Candi Buddha dengan patung Buddha tidur yang megah dan atmosfer spiritual yang tenang</p>
+              <p class="text-gray-400">Candi Buddha dengan patung Buddha tidur yang megah dan atmosfer spiritual yang tenang.</p>
             </div>
           </div>
+
         </div>
       </div>
-      
-      <!-- B. Rekomendasi Destinasi di Kepri -->
+
+      <!-- REKOMENDASI DESTINASI -->
       <div>
-        <h3 class="text-2xl font-bold text-center text-white mb-10">Rekomendasi Destinasi di Kepri</h3>
+        <h3 class="text-2xl font-bold text-center text-white mb-10">
+          Recommended Destinations in Kepri
+        </h3>
+
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- 1. Museum Raja Ali Haji -->
+
           <div class="bg-[#111827] rounded-2xl overflow-hidden destination-card shadow-lg border border-gray-800">
             <div class="h-56 overflow-hidden">
               <img src="museum-raja-ali-haji.jpg" alt="Museum Raja Ali Haji" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
             <div class="p-7">
               <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">MUSEUM RAJA ALI HAJI</h4>
-              <p class="text-gray-400 mb-5">Museum sejarah dan budaya Melayu Riau yang menyimpan warisan budaya dan naskah kuno</p>
+              <p class="text-gray-400 mb-5">Museum sejarah dan budaya Melayu Riau yang menyimpan warisan budaya dan naskah kuno.</p>
               <div class="flex justify-between items-center">
                 <span class="text-yellow-400 text-lg">
                   <i class="fas fa-star"></i>
@@ -300,15 +390,14 @@
               </div>
             </div>
           </div>
-          
-          <!-- 2. Pantai Indah Mutiara -->
+
           <div class="bg-[#111827] rounded-2xl overflow-hidden destination-card shadow-lg border border-gray-800">
             <div class="h-56 overflow-hidden">
               <img src="pantai-indah-mutiara.jpg" alt="Pantai Indah Mutiara" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
             <div class="p-7">
               <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">PANTAI INDAH MUTIARA</h4>
-              <p class="text-gray-400 mb-5">Pantai di Bengkong dengan pemandangan laut tenang dan fasilitas keluarga yang lengkap</p>
+              <p class="text-gray-400 mb-5">Pantai di Bengkong dengan pemandangan laut tenang dan fasilitas keluarga yang lengkap.</p>
               <div class="flex justify-between items-center">
                 <span class="text-yellow-400 text-lg">
                   <i class="fas fa-star"></i>
@@ -321,15 +410,14 @@
               </div>
             </div>
           </div>
-          
-          <!-- 3. Pulau Mubud -->
+
           <div class="bg-[#111827] rounded-2xl overflow-hidden destination-card shadow-lg border border-gray-800">
             <div class="h-56 overflow-hidden">
               <img src="pulau-mubud.jpeg" alt="Pulau Mubud" class="w-full h-full object-cover hover:scale-110 transition duration-300">
             </div>
             <div class="p-7">
               <h4 class="font-bold text-xl mb-3 text-[#f59e0b]">PULAU MUBUD</h4>
-              <p class="text-gray-400 mb-5">Pulau eksotis dengan pantai pasir putih dan air laut jernih untuk snorkeling dan diving</p>
+              <p class="text-gray-400 mb-5">Pulau eksotis dengan pantai pasir putih dan air laut jernih untuk snorkeling dan diving.</p>
               <div class="flex justify-between items-center">
                 <span class="text-yellow-400 text-lg">
                   <i class="fas fa-star"></i>
@@ -342,8 +430,7 @@
               </div>
             </div>
           </div>
-          
-          <!-- 4. Kelong Black Coral -->
+
           <div class="bg-[#111827] rounded-2xl overflow-hidden destination-card shadow-lg border border-gray-800">
             <div class="h-56 overflow-hidden">
               <img src="kelong-bintan-black-coral.jpg" alt="Kelong Black Coral" class="w-full h-full object-cover hover:scale-110 transition duration-300">
@@ -363,13 +450,15 @@
               </div>
             </div>
           </div>
+
         </div>
-        
+
         <div class="text-center mt-16">
-          <a href="https://wa.me/6285767816101?text=Halo%20TravOne,%20saya%20ingin%20konsultasi%20tentang%20destinasi%20wisata%20di%20Kepri" 
-             target="_blank"
+          <a href="https://wa.me/62895411990998?text=Halo%20TravOne,%20saya%20ingin%20konsultasi%20tentang%20destinasi%20wisata%20di%20Kepri"
+             target="_blank" rel="noopener noreferrer"
              class="inline-block bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-lg px-10 py-5 rounded-xl shadow-lg transition-all hover:scale-105">
-            <i class="fas fa-map-marked-alt mr-3"></i>KONSULTASI DESTINASI WISATA
+            <i class="fas fa-map-marked-alt mr-3"></i>
+            KONSULTASI DESTINASI WISATA
           </a>
         </div>
       </div>
@@ -379,22 +468,24 @@
   <!-- KONTAK -->
   <section id="contact" class="py-24 bg-[#111827]">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold text-[#f59e0b] mb-6">HUBUNGI KAMI</h2>
-      <p class="text-gray-300 text-xl mb-12">Ready melayani perjalanan Anda 24/7</p>
-      
+      <h2 class="text-4xl font-bold text-[#f59e0b] mb-6">CONTACT US!</h2>
+      <p class="text-gray-300 text-xl mb-12">Ready to serve your travel needs 24/7</p>
+
       <div class="grid md:grid-cols-2 gap-10 mb-16">
+
         <div class="bg-[#0b1220] p-8 rounded-2xl shadow-lg border border-gray-800">
           <div class="text-[#f59e0b] text-5xl mb-6">
             <i class="fab fa-whatsapp"></i>
           </div>
           <h3 class="text-2xl font-bold mb-3 text-white">WhatsApp</h3>
           <p class="text-gray-400 mb-6 text-lg">Fast Response</p>
-          <a href="https://wa.me/6285767816101" target="_blank" 
+          <a href="https://wa.me/62895411990998"
+             target="_blank" rel="noopener noreferrer"
              class="inline-block bg-[#f59e0b] hover:bg-[#e5900a] text-[#0b1220] font-bold text-lg px-8 py-4 rounded-xl shadow-lg transition-all">
             CHAT SEKARANG
           </a>
         </div>
-        
+
         <div class="bg-[#0b1220] p-8 rounded-2xl shadow-lg border border-gray-800">
           <div class="text-[#f59e0b] text-5xl mb-6">
             <i class="fas fa-map-marker-alt"></i>
@@ -403,6 +494,7 @@
           <p class="text-gray-400 text-lg">Batam, Indonesia</p>
           <p class="text-gray-500 mt-3">Melayani seluruh area batam dan sekitarnya</p>
         </div>
+
       </div>
     </div>
   </section>
@@ -411,38 +503,47 @@
   <footer class="bg-[#0b1220] py-16 border-t border-gray-800">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+
+        <!-- LOGO TRAVONE FOOTER -->
         <div class="flex items-center space-x-4 mb-8 md:mb-0">
-          <div class="w-16 h-16 bg-[#f59e0b] rounded-2xl flex items-center justify-center shadow-lg">
-            <span class="font-bold text-[#0b1220] text-2xl">TO</span>
-          </div>
+          <img
+            src="data:image/webp;base64,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"
+            alt="Logo TravOne Tour n Travel"
+            class="footer-logo"
+          >
+
           <div class="text-left">
             <h3 class="text-2xl font-bold text-[#f59e0b]">TravOne</h3>
             <p class="text-gray-400">Transport Batam</p>
-            <p class="text-gray-500 text-sm mt-2">"Melayani dengan Hati, Mengutamakan Kenyamanan"</p>
+            <p class="text-gray-500 text-sm mt-2">
+              "Melayani dengan Hati, Mengutamakan Kenyamanan"
+            </p>
           </div>
         </div>
-        
+
         <div class="text-center md:text-right">
-          <h4 class="text-xl font-bold text-white mb-4">Kontak</h4>
-          <a href="https://wa.me/6285767816101" target="_blank" class="text-[#f59e0b] hover:text-[#e5900a] text-lg font-medium">
-            <i class="fab fa-whatsapp mr-2"></i>+62 857-6781-6101
+          <h4 class="text-xl font-bold text-white mb-4">Contact</h4>
+          <a href="https://wa.me/62895411990998"
+             target="_blank" rel="noopener noreferrer"
+             class="text-[#f59e0b] hover:text-[#e5900a] text-lg font-medium">
+            <i class="fab fa-whatsapp mr-2"></i>+62 895-4119-90998
           </a>
           <p class="text-gray-400 mt-2">travone.batam@gmail.com</p>
         </div>
       </div>
-      
+
       <div class="flex flex-wrap justify-center gap-8 mb-8">
         <a href="#home" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Home</a>
-        <a href="#about" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Tentang</a>
-        <a href="#services" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Layanan</a>
-        <a href="#cars" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Armada</a>
-        <a href="#destinations" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Destinasi</a>
-        <a href="#contact" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Kontak</a>
+        <a href="#about" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">About Us</a>
+        <a href="#services" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Services</a>
+        <a href="#cars" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Fleet</a>
+        <a href="#destinations" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Destinations</a>
+        <a href="#contact" class="text-gray-400 hover:text-[#f59e0b] font-medium transition-colors">Contact</a>
       </div>
-      
+
       <div class="border-t border-gray-800 pt-8 text-center">
         <p class="text-gray-500">
-          &copy; 2026 TravOne - Transport Batam. All rights reserved. | 
+          &copy; 2026 TravOne - Transport Batam. All rights reserved. |
           <span class="text-gray-400">Professional Car Rental Service</span>
         </p>
       </div>
